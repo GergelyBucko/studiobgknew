@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="hu" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio BGK - Modern Marketing Ügynökség</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        // Helyes Tailwind Konfiguráció
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-blue': '#1E3A8A',
+                        'brand-orange': '#F59E0B',
+                        'light-bg': '#F3F4F6',
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                        condensed: ['Roboto Condensed', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-effect {
+            background-color: rgba(243, 244, 246, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        
+        /* A meglévő .glass-effect szabály ALÁ illeszd be: */
+.gsap-reveal {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(50px);
+}
+
+/* A 3D-s kártyaforgatáshoz szükséges egyedi stílusok */
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    aspect-ratio: 4 / 5; /* Kártya méretaránya */
+    perspective: 1000px; /* A 3D tér mélysége */
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+}
+
+/* A hover-alapú forgatás helyett most a .is-flipped osztály váltja ki */
+.flip-card-inner.is-flipped {
+    transform: rotateY(180deg);
+}
+
+/* Hozzáadja a kattintható kurzort, jelezve az interakciót */
+.flip-card {
+    cursor: pointer;
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    border-radius: 0.5rem; /* rounded-lg */
+    overflow: hidden;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+}
+
+.flip-card-inner {
+    transition: transform 0.7s, box-shadow 0.3s;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); /* shadow-lg */
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: scale(1.05);
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); /* shadow-2xl */
+}
+
+/* Ez biztosítja, hogy a forgatás után is működjön a scale */
+.flip-card:hover .flip-card-inner.is-flipped {
+    transform: rotateY(180deg) scale(1.05);
+}
+
+/* Akadálymentesítés: csökkentett mozgás esetén nincs animáció */
+@media (prefers-reduced-motion: reduce) {
+    .flip-card:hover .flip-card-inner {
+        transform: none;
+    }
+}
+    </style>
+</head>
+<body class="bg-light-bg font-sans text-gray-800 antialiased">
+
+<!--HEADER-->
+    <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out">
+        <nav id="main-nav" class="container mx-auto px-4 py-2 flex justify-between items-center">
+            <a href="#top" aria-label="Ugrás az oldal tetejére" id="logo" class="font-condensed text-2xl font-bold text-white lg:text-brand-blue tracking-wider transition-colors duration-300 z-50">    
+                <img src="assets/images/logo.webp" alt="Studio BGK logó" class="h-10 w-auto">
+</a>
+            <ul class="hidden lg:flex items-center justify-center space-x-8">
+                <li><a href="#top" aria-label="Ugrás az oldal tetejére" id="nav-link-home" class="text-white hover:text-brand-orange transition-colors duration-300" title="Főoldal"></a></li>
+                <li><a href="#szolgaltatasok" class="nav-link font-condensed text-lg tracking-wide text-white hover:text-brand-orange transition-colors duration-300">Szolgáltatások</a></li>
+                <li><a href="#miert-en" class="nav-link font-condensed text-lg tracking-wide text-white hover:text-brand-orange transition-colors duration-300">Rólam</a></li>
+                <li><a href="#eredmenyeim" class="nav-link font-condensed text-lg tracking-wide text-white hover:text-brand-orange transition-colors duration-300">Eredmények</a></li>
+                <li><a href="#weboldal-sablonok" class="nav-link font-condensed text-lg tracking-wide text-white hover:text-brand-orange transition-colors duration-300">Weboldal sablonok</a></li>
+                <li><a href="#gyik" class="nav-link font-condensed text-lg tracking-wide text-white hover:text-brand-orange transition-colors duration-300">GYIK</a></li>
+            </ul>
+            <div class="flex items-center space-x-4">
+                 <a href="#kapcsolat" class="hidden lg:block bg-brand-orange text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-orange-500 transition-all duration-300 transform hover:scale-105">Kapcsolat</a>
+                <button id="hamburger-button" class="lg:hidden z-50 text-white transition-colors duration-300" aria-label="Menü megnyitása">
+                    <svg id="icon-menu" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                    <svg id="icon-close" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+<div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-brand-blue/95 backdrop-blur-lg flex-col justify-center items-center space-y-8 text-white text-2xl font-condensed tracking-wider transform -translate-x-full transition-transform duration-500 ease-in-out lg:hidden z-40 flex">
+    <a href="#szolgaltatasok" class="mobile-menu-item">Szolgáltatások</a>
+    <a href="#miert-en" class="mobile-menu-item">Rólam</a>
+    <a href="#eredmenyeim" class="mobile-menu-item">Eredmények</a>
+    <a href="#weboldal-sablonok" class="mobile-menu-item">Weboldal sablonok</a>
+    <a href="#gyik" class="mobile-menu-item">GYIK</a>
+    <a href="#kapcsolat" class="mobile-menu-item mt-8 bg-brand-orange text-white font-bold py-3 px-8 rounded-lg shadow-lg">Kapcsolat</a>
+</div>
+
+    <main>
+<!--HERO-->
+<section class="relative h-screen w-full flex items-center justify-center text-center text-white bg-brand-blue" aria-label="Főoldali bemutatkozó szekció">
+    <div class="absolute top-0 left-0 w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2574&auto-format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+    </div>
+    <div class="absolute top-0 left-0 w-full h-full bg-brand-blue/30 mix-blend-multiply"></div>
+    <div class="absolute top-0 left-0 w-full h-full bg-black/40"></div>
+    
+    <div class="relative z-10 max-w-4xl mx-auto px-6">
+        <h1 class="hero-title font-condensed text-5xl md:text-7xl font-bold mb-4 tracking-tight text-shadow-lg">
+            <span class="relative inline-block pb-5">
+                Garantált ügyfélszerzés
+                <span id="underline-span" class="absolute left-0 bottom-0 w-full h-3 md:h-4 transform scale-x-0 origin-left">
+                    <svg viewBox="0 0 294 17" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                        <path d="M2 10.3686C18.5335 5.21507 72.2479 -2.85966 125.045 2.15584C183.189 7.71181 234.331 11.7584 292 6.55173" stroke="#F59E0B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </span>
+            <br class="block md:block"> modern digitális megoldásokkal
+        </h1>
+        <p class="hero-subtitle text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto text-shadow-md">
+            Teljes körű webfejlesztés és online marketing valódi eredményekkel
+        </p>
+        <div class="hero-cta-group flex flex-col sm:flex-row justify-center items-center gap-4">
+            <a href="#kapcsolat" class="w-full sm:w-auto bg-brand-orange text-white font-bold py-4 px-8 rounded-lg shadow-xl hover:bg-orange-500 transition-all duration-300 transform hover:scale-105">
+                Dolgozzunk Együtt!
+            </a>
+            <a href="#szolgaltatasok" class="w-full sm:w-auto bg-white/90 text-brand-blue font-bold py-4 px-8 rounded-lg shadow-xl hover:bg-white transition-all duration-300 transform hover:scale-105">
+                Tudj meg többet
+            </a>
+        </div>
+    </div>
+</section>
+
+<div class="relative w-full h-20 md:h-32 -mt-20 md:-mt-32">
+    <div class="absolute bottom-0 left-0 w-full h-full">
+        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#ffffff" d="M0,192L48,176C96,160,192,128,288,133.3C384,139,480,181,576,186.7C672,192,768,160,864,144C960,128,1056,128,1152,149.3C1248,171,1344,213,1392,234.7L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </div>
+</div>
+
+<!--PROBLEM HEADING-->
+<section  style="background: linear-gradient(to bottom, #FFFFFF, #F3F4F6);" class="py-20 relative overflow-hidden" aria-labelledby="problema-heading">
+    
+    <div class="absolute right-0 translate-x-1/2 opacity-10" aria-hidden="true">
+         <div class="w-[600px] h-[500px] bg-brand-blue rounded-full filter blur-3xl"></div>
+    </div>
+    
+    <div class="container mx-auto px-6 text-center relative z-10">
+        <h2 id="problema-heading" class="font-condensed text-4xl md:text-5xl font-bold text-brand-blue mb-4 uppercase">
+Ne pazarold el a pénzedet!
+                
+
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-16">
+            Ne hagyd, hogy a legjobb ötleteid és a kemény munkád csendben maradjanak a digitális zajban. Ismerős az érzés?
+        </p>
+
+        <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center text-left">
+            <div class="space-y-6">
+                <h3 class="font-condensed text-3xl font-bold text-gray-800">
+                    A legjobb termék sem adja el magát
+                </h3>
+                <p class="text-gray-600">
+                    Hiába a kiemelkedő szolgáltatás vagy a minőségi termék, ha a potenciális vevőid egyszerűen nem találnak rád. A digitális térben a figyelemért vívott harcban könnyű elveszni, és a konkurencia egy pillanat alatt leelőz, ha nincs egy jól felépített, tudatos online jelenléted.
+                </p>
+                <p class="text-gray-600 font-medium">
+                    Mi nem csak hirdetéseket készítünk. Stratégiát építünk a zaj köré, hogy a te hangod legyen a leghangosabb.
+                </p>
+            </div>
+
+            <div class="space-y-8">
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0 bg-brand-orange/10 p-3 rounded-full">
+                        <svg class="h-6 w-6 text-brand-orange" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-800 text-lg">Elpazarolt hirdetési pénzek</h4>
+                        <p class="text-gray-600">A kampányok mennek, a pénz fogy, de a valódi, fizető ügyfelek nem érkeznek.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0 bg-brand-orange/10 p-3 rounded-full">
+                        <svg class="h-6 w-6 text-brand-orange" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m-7.14-4.122a3 3 0 0 0-4.682 2.72 9.094 9.094 0 0 0 3.741.479m7.14-4.122a9.093 9.093 0 0 0-3.741-.479m-3.741.479a9.093 9.093 0 0 0-3.741.479m-4.122-7.14a3 3 0 0 0 2.72 4.682 9.095 9.095 0 0 0 .479-3.741m-4.122 7.14a9.095 9.095 0 0 0-.479 3.741 3 3 0 0 0 4.682-2.72m.479-3.741a9.095 9.095 0 0 0-.479-3.741M12 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-800 text-lg">Erősödő konkurencia</h4>
+                        <p class="text-gray-600">A versenytársak mintha mindenhol ott lennének, miközben te egy helyben toporogsz.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0 bg-brand-orange/10 p-3 rounded-full">
+                        <svg class="h-6 w-6 text-brand-orange" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 1-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 1 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 1 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 1-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-800 text-lg">Bizonytalan megtérülés (ROI)</h4>
+                        <p class="text-gray-600">Nem látod tisztán, hogy a marketingre költött forintokból mennyi lesz bevétel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--WEB-NEED-->
+<section id="miert-weboldal" class="bg-light-bg py-20" aria-labelledby="weboldal-heading">
+    <div class="container mx-auto px-6">
+        <div class="bg-white rounded-xl shadow-2xl border border-gray-200/80 p-8 md:p-12 lg:p-16 relative overflow-hidden">
+            
+            <div class="absolute left-0 top-0 text-brand-blue" aria-hidden="true">
+                        <svg class="h-32 w-32 text-brand-orange opacity-15" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+                        </svg>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center relative z-10">
+                <div class="space-y-6">
+                    <h2 id="weboldal-heading" class="font-condensed text-4xl md:text-5xl font-bold text-brand-blue">
+                        A közösségi média profil nem weboldal.
+                    </h2>
+                    <p class="text-xl font-medium text-gray-700 leading-relaxed">
+                        Gondolj rá így: a közösségi média a buli, ahol bemutatkozol. A weboldalad az otthonod, ahová hazaviszed az igazán fontos vendégeket.
+                    </p>
+                    <p class="text-gray-600">
+                        A közösségi oldalakon csak bérelsz egy apró helyet. Bármikor változhatnak a szabályok, az algoritmusok, vagy akár el is veszítheted a fiókodat. Ezzel szemben a saját weboldalad a te digitális főhadiszállásod: egy olyan stabil, megbízható online tér, amit 100%-ban te irányítasz. Ez az a hely, ahol a márkaépítés, az értékesítés és a bizalomépítés igazán elkezdődik.
+                    </p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-8">
+                    <div class="bg-light-bg/80 p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                        <p class="font-condensed text-5xl font-bold text-brand-orange">75%</p>
+                        <h4 class="font-bold text-gray-800 mt-2">A hitelességed múlik rajta</h4>
+                        <p class="text-sm text-gray-600 mt-1">
+                            A felhasználók háromnegyede egy cég hitelességét a weboldalának minősége alapján ítéli meg. (Forrás: Forbes)
+                        </p>
+                    </div>
+                    <div class="bg-light-bg/80 p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                        <p class="font-condensed text-5xl font-bold text-brand-orange">81%</p>
+                        <h4 class="font-bold text-gray-800 mt-2">Az ügyfeleid itt keresnek</h4>
+                        <p class="text-sm text-gray-600 mt-1">
+                            A vásárlók túlnyomó többsége online kutatást végez, mielőtt terméket vagy szolgáltatást venne. (Forrás: HubSpot)
+                        </p>
+                    </div>
+                    <div class="bg-light-bg/80 p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                        <p class="font-condensed text-5xl font-bold text-brand-orange">93%</p>
+                        <h4 class="font-bold text-gray-800 mt-2">Itt kezdődik a láthatóság</h4>
+                        <p class="text-sm text-gray-600 mt-1">
+                            Az online élmények 93%-a egy keresőmotorral (pl. Google) indul, ami a weboldaladat listázza, nem a Facebook posztodat.
+                        </p>
+                    </div>
+                     <div class="bg-light-bg/80 p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                        <p class="font-condensed text-5xl font-bold text-brand-orange">24/7</p>
+                        <h4 class="font-bold text-gray-800 mt-2">A marketinges, aki sosem alszik</h4>
+                        <p class="text-sm text-gray-600 mt-1">
+                            A weboldalad éjjel-nappal tájékoztatja és meggyőzi a látogatókat, akkor is, amikor te épp nem dolgozol.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--CTA-->
+<section id="cta-megoldas" class="relative text-white" style="background: linear-gradient(to bottom right, #2563eb, #1E3A8A);" aria-labelledby="cta-heading-1">
+
+    <div class="container mx-auto px-6 py-24 md:py-32 text-center relative z-10">
+        <h2 id="cta-heading-1" class="font-condensed text-4xl md:text-5xl font-bold mb-4">
+            És akkor mi a megoldás?
+        </h2>
+        <p class="text-lg text-gray-200 max-w-2xl mx-auto mb-10">
+            A megoldás egy stratégiailag felépített, profi digitális jelenlét, aminek a középpontjában egy modern és gyors weboldal áll. Egy online otthon, ami éjjel-nappal neked dolgozik.
+        </p>
+        <a href="#szolgaltatasok" class="inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-lg shadow-xl text-lg transform transition-transform duration-300 hover:scale-105 hover:bg-orange-500" aria-label="Tudj meg többet a szolgáltatásokról és nézzük meg, hogyan segítünk a növekedésben">
+            Nézzük meg, hogyan segítünk! <span class="ml-2" aria-hidden="true">&rarr;</span>
+        </a>
+    </div>
+
+    <div class="absolute bottom-0 left-0 w-full h-16 md:h-24" aria-hidden="true">
+       <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+           <path fill="#F3F4F6" d="M0,192L48,176C96,160,192,128,288,133.3C384,139,480,181,576,186.7C672,192,768,160,864,144C960,128,1056,128,1152,149.3C1248,171,1344,213,1392,234.7L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+       </svg>
+    </div>
+</section>
+
+<!--SZOLGÁLTATÁSOK-->
+<section id="szolgaltatasok" class="py-20 bg-light-bg" aria-labelledby="szolgaltatasok-heading">
+    <div class="container mx-auto px-6 text-center">
+        <h2 id="szolgaltatasok-heading" class="font-condensed text-4xl font-bold text-brand-blue mb-4">
+            Együtt Felépítjük A Digitális Sikered
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-16">
+            A stratégiától a megvalósításig – minden egy helyen, amire a márkádnak online szüksége van a növekedéshez.
+        </p>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <div class="flip-card">
+                <div class="flip-card-inner rounded-lg shadow-lg">
+                    <div class="flip-card-front">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2670&auto=format&fit=crop" alt="Digitális marketing stratégia kidolgozása megbeszélésen" class="absolute w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/50 flex items-end p-6">
+                            <h3 class="font-condensed text-2xl font-bold text-white">Digitális Stratégia</h3>
+                        </div>
+                    </div>
+                    <div class="flip-card-back bg-brand-blue text-white flex flex-col justify-center p-6">
+                        <h3 class="font-condensed text-2xl font-bold mb-2">Digitális Stratégia</h3>
+                        <p class="text-gray-200">Mielőtt egyetlen forintot is költenél, közösen felépítünk egy kikezdhetetlen tervet. Piac- és konkurenciaelemzés, célok meghatározása, és egy pontos útiterv a sikerhez.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner rounded-lg shadow-lg">
+                    <div class="flip-card-front">
+                        <img src="https://images.unsplash.com/photo-1572044162444-24c95621ec3b?q=80&w=2574&auto=format&fit=crop" alt="Arculattervezés és branding folyamata színekkel és vázlatokkal" class="absolute w-full h-full object-cover">
+                         <div class="absolute inset-0 bg-black/50 flex items-end p-6">
+                            <h3 class="font-condensed text-2xl font-bold text-white">Arculattervezés & Branding</h3>
+                        </div>
+                    </div>
+                    <div class="flip-card-back bg-brand-blue text-white flex flex-col justify-center p-6">
+                        <h3 class="font-condensed text-2xl font-bold mb-2">Arculattervezés & Branding</h3>
+                        <p class="text-gray-200">Az első benyomás megismételhetetlen. Egyedi logót, színeket és vizuális elemeket tervezünk, amik bizalmat ébresztenek és kiemelnek a tömegből.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner rounded-lg shadow-lg">
+                    <div class="flip-card-front">
+                        <img src="https://images.unsplash.com/photo-1555774698-0b77e0ab232F?q=80&w=2670&auto=format&fit=crop" alt="Modern weboldal dizájn laptopon és mobilon" class="absolute w-full h-full object-cover">
+                         <div class="absolute inset-0 bg-black/50 flex items-end p-6">
+                            <h3 class="font-condensed text-2xl font-bold text-white">Weboldal & Webshop Készítés</h3>
+                        </div>
+                    </div>
+                    <div class="flip-card-back bg-brand-blue text-white flex flex-col justify-center p-6">
+                         <h3 class="font-condensed text-2xl font-bold mb-2">Weboldal & Webshop Készítés</h3>
+                        <p class="text-gray-200">Gyors, mobilbarát és felhasználóközpontú weboldalt készítünk, ami nemcsak szép, hanem hatékonyan alakítja a látogatókat fizető ügyfelekké.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner rounded-lg shadow-lg">
+                    <div class="flip-card-front">
+                        <img src="https://images.unsplash.com/photo-1554224155-8d044b403259?q=80&w=2670&auto=format&fit=crop" alt="Online marketing kampány eredményeinek elemzése grafikonokon" class="absolute w-full h-full object-cover">
+                         <div class="absolute inset-0 bg-black/50 flex items-end p-6">
+                            <h3 class="font-condensed text-2xl font-bold text-white">Online Marketing & Hirdetéskezelés</h3>
+                        </div>
+                    </div>
+                    <div class="flip-card-back bg-brand-blue text-white flex flex-col justify-center p-6">
+                        <h3 class="font-condensed text-2xl font-bold mb-2">Online Marketing & Hirdetéskezelés</h3>
+                        <p class="text-gray-200">A megfelelő emberekhez juttatjuk el az üzeneted. SEO, Google Ads és közösségi média hirdetések, amik valódi, mérhető eredményeket hoznak.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-16">
+            <a href="#kapcsolat" class="inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-lg shadow-xl text-lg transform transition-transform duration-300 hover:scale-105 hover:bg-orange-500">
+                Melyik megoldás illik hozzád? Beszéljünk róla!
+            </a>
+        </div>
+    </div>
+</section>
+
+<!--WHY US-->
+<section id="miert-en" class="bg-light-bg py-20" aria-labelledby="miert-minket-heading">
+    <div class="container mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 id="miert-minket-heading" class="font-condensed text-4xl font-bold text-brand-blue mb-4">
+                Több Mint Egy Ügynökség. A Te Digitális Partnered.
+            </h2>
+            <p class="text-lg text-gray-600">
+                Nem hiszünk a sablonmegoldásokban és a futószalagon gyártott projektekben. Mi a te csapatod kiterjesztéseként dolgozunk, ahol a közös cél a te vállalkozásod mérhető növekedése.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            
+            <div class="text-center">
+                <div class="flex justify-center items-center mx-auto bg-brand-orange/10 rounded-full h-16 w-16 mb-4">
+                     <svg class="h-8 w-8 text-brand-orange" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 11.667 0l3.181-3.183m-4.991-2.691v4.992h4.992" />
+                    </svg>
+                </div>
+                <h3 class="font-condensed text-xl font-bold text-brand-orange mb-2">
+                    Valódi Partnerség
+                </h3>
+                <p class="text-gray-600">
+                    Nem csak egy külsős cég vagyunk a sok közül. Beleássuk magunkat a céged működésébe, megértjük a céljaidat, és veled együtt dolgozunk a közös sikerekért.
+                </p>
+            </div>
+
+            <div class="text-center">
+                <div class="flex justify-center items-center mx-auto bg-brand-orange/10 rounded-full h-16 w-16 mb-4">
+                   <svg class="h-8 w-8 text-brand-orange" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" />
+                    </svg>
+                </div>
+                <h3 class="font-condensed text-xl font-bold text-brand-orange mb-2">
+                    Adatvezérelt Hozzáállás
+                </h3>
+                <p class="text-gray-600">
+                    Nem lövöldözünk a sötétben. Minden döntésünket adatokra és elemzésekre alapozzuk, így a marketingre költött pénzed a lehető leghatékonyabban térül meg (ROI).
+                </p>
+            </div>
+
+            <div class="text-center">
+                <div class="flex justify-center items-center mx-auto bg-brand-orange/10 rounded-full h-16 w-16 mb-4">
+                    <svg class="h-8 w-8 text-brand-orange" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639l4.43-7.598A4.5 4.5 0 0 1 10.5 2.25h3a4.5 4.5 0 0 1 4.034 3.82l4.43 7.598a1.012 1.012 0 0 1 0 .639l-4.43 7.598A4.5 4.5 0 0 1 13.5 21.75h-3a4.5 4.5 0 0 1-4.034-3.82l-4.43-7.598Z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>
+                </div>
+                <h3 class="font-condensed text-xl font-bold text-brand-orange mb-2">
+                    Teljes Átláthatóság
+                </h3>
+                <p class="text-gray-600">
+                    Nincsenek rejtett költségek vagy érthetetlen riportok. Pontosan tudni fogod, mire költjük a pénzed, és milyen eredményeket érünk el. Tiszta és őszinte kommunikáció, mindenek felett.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--ABOUT-->
+<section id="egyuttmukodes" class="bg-light-bg py-20" aria-labelledby="egyuttmukodes-heading">
+    <div class="container mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+            <div class="wow slideInLeft">
+                <img src="https://assets-global.website-files.com/657512a8497676646738b813/65790445a6c3f68ddf98b679_kep.webp" 
+                     alt="Balogh Gábor - a Studio BGK alapítója, digitális stratégiai tanácsadó" 
+                     loading="lazy"
+                     width="800"
+                     height="1000"
+                     class="rounded-lg shadow-2xl w-full h-auto object-cover aspect-[4/5]">
+            </div>
+
+            <div class="wow slideInRight">
+                <h2 id="egyuttmukodes-heading" class="font-condensed text-4xl font-bold text-brand-blue mb-4">
+                    Együttműködés, Lépésről Lépésre
+                </h2>
+                <p class="text-gray-600 mb-8 text-lg">
+                    Hiszek a tiszta kommunikációban és a strukturált folyamatokban, ahol te mindig pontosan tudod, mi és miért történik. Nincsenek meglepetések, csak közös munka a közös célért. A folyamatunk egyszerű és átlátható:
+                </p>
+
+                <div class="space-y-8">
+                    <div class="flex items-start gap-4">
+                        <div class="font-condensed text-4xl font-bold text-brand-orange flex-shrink-0 mt-1" aria-hidden="true">01.</div>
+                        <div>
+                            <h3 class="font-condensed text-xl font-bold text-gray-800">Megismerkedés & Célok Meghatározása</h3>
+                            <p class="text-gray-600">Minden egy beszélgetéssel kezdődik, ahol én hallgatlak téged. Megismerem a céged, a kihívásaid és a céljaid, hogy a megoldás valóban rád legyen szabva.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="font-condensed text-4xl font-bold text-brand-orange flex-shrink-0 mt-1" aria-hidden="true">02.</div>
+                        <div>
+                            <h3 class="font-condensed text-xl font-bold text-gray-800">Részletes Stratégia & Ütemterv Készítése</h3>
+                            <p class="text-gray-600">A célok alapján egy részletes, személyre szabott stratégiát és ütemtervet készítek. Pontosan látni fogod, mit, mikor és hogyan fogunk megvalósítani.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="font-condensed text-4xl font-bold text-brand-orange flex-shrink-0 mt-1" aria-hidden="true">03.</div>
+                        <div>
+                            <h3 class="font-condensed text-xl font-bold text-gray-800">Kreatív Megvalósítás & Folyamatos Fejlesztés</h3>
+                            <p class="text-gray-600">Itt történik a varázslat. Folyamatos kommunikáció és visszajelzési lehetőségek mellett életre keltjük a terveket, legyen szó arculatról, weboldalról vagy kampányról.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="font-condensed text-4xl font-bold text-brand-orange flex-shrink-0 mt-1" aria-hidden="true">04.</div>
+                        <div>
+                            <h3 class="font-condensed text-xl font-bold text-gray-800">Eredmények Mérése & Optimalizáció</h3>
+                            <p class="text-gray-600">A közös munka nem ér véget az indulással. Folyamatosan mérjük az eredményeket, és finomhangoljuk a stratégiát, hogy a befektetésed a lehető legmagasabb megtérülést hozza.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-16 text-center">
+            <a href="#kapcsolat" class="inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-lg shadow-xl text-lg transform transition-transform duration-300 hover:scale-105 hover:bg-orange-500" aria-label="Kezdjük el a közös munkát! Keress minket!">
+                Kezdjük el a közös munkát!
+            </a>
+        </div>
+    </div>
+</section>
+
+<!--EREDMENYEK-->
+<section id="eredmenyeim" class="py-20 text-gray-800" style="background: linear-gradient(to bottom right, #2563eb, #1E3A8A);" aria-labelledby="eredmenyek-heading">
+    <div class="container mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 id="eredmenyek-heading" class="font-condensed text-4xl font-bold text-white mb-4">
+                Eredmények, Amik Magukért Beszélnek
+            </h2>
+            <p class="text-lg text-gray-200">
+                Nem csak projekteket zárunk, hanem sikertörténeteket írunk. Közösen. Nézd meg, mit értek el azok, akik már minket választottak.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
+
+            <div class="bg-white rounded-lg shadow-xl p-8 flex flex-col relative overflow-hidden transform transition-transform duration-300 hover:scale-[1.02] hover:shadow-2xl">
+                <svg class="absolute top-0 right-0 h-32 w-32 text-brand-blue/5 -mr-4 -mt-4 transform rotate-12" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 14a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path></svg>
+                
+                <div class="relative z-10">
+                    <img class="h-10 w-auto" src="https://tailwindui.com/img/logos/reform-logo-gray-900.svg" alt="Perfect Szerviz logó" loading="lazy">
+                </div>
+                
+                <div class="my-6 relative z-10">
+                    <p class="font-condensed text-6xl font-bold text-brand-orange">+320%</p>
+                    <p class="font-condensed text-xl text-brand-blue">Organikus Forgalom Növekedés</p>
+                </div>
+                
+                <blockquote class="text-gray-600 italic relative z-10">
+                    “Mielőtt a Studio BGK-val dolgoztunk, mintha nem is léteztünk volna a Google-ben. Ma már folyamatosan jönnek a megkeresések a weboldalról. A profizmusuk és a folyamatos törődésük mindent megváltoztatott.”
+                </blockquote>
+                
+                <footer class="mt-6 pt-6 border-t border-gray-300 relative z-10">
+                    <p class="font-bold text-gray-800">Nagy Károly</p>
+                    <p class="text-sm text-gray-500">Cégtulajdonos, Perfect Szerviz</p>
+                </footer>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-xl p-8 flex flex-col relative overflow-hidden transform transition-transform duration-300 hover:scale-[1.02] hover:shadow-2xl">
+                <svg class="absolute top-0 right-0 h-32 w-32 text-brand-blue/5 -mr-4 -mt-4 transform rotate-12" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 14a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path></svg>
+                
+                <div class="relative z-10">
+                    <img class="h-10 w-auto" src="https://tailwindui.com/img/logos/savvycal-logo-gray-900.svg" alt="Kreatív Otthon Webshop logó" loading="lazy">
+                </div>
+                
+                <div class="my-6 relative z-10">
+                    <p class="font-condensed text-6xl font-bold text-brand-orange">+150%</p>
+                    <p class="font-condensed text-xl text-brand-blue">Konverziós Ráta Javulás</p>
+                </div>
+                
+                <blockquote class="text-gray-600 italic relative z-10">
+                    “Féltünk a marketingesektől, akik csak a pénzünket akarták. A Studio BGK volt az első, aki valóban megértette a termékünket, és olyan stratégiát épített, ami nemcsak látogatókat, hanem valódi, visszatérő vásárlókat hozott.”
+                </blockquote>
+                
+                <footer class="mt-6 pt-6 border-t border-gray-300 relative z-10">
+                    <p class="font-bold text-gray-800">Horváth Éva</p>
+                    <p class="text-sm text-gray-500">Alapító, Kreatív Otthon Webshop</p>
+                </footer>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!--REFERENCIA-->
+<section id="referenciak" class="py-20" style="background: linear-gradient(to bottom, #F3F4F6, #FFFFFF);" aria-labelledby="referenciak-heading">
+    <div class="container mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 id="referenciak-heading" class="font-condensed text-4xl font-bold text-brand-blue mb-4">
+                Munkák, Amikre Büszkék Vagyunk
+            </h2>
+            <p class="text-lg text-gray-600">
+                Minden projekt egy új kihívás és egy új lehetőség, hogy valami maradandót alkossunk. Íme néhány példa a közös sikereinkből.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12">
+
+            <div class="bg-white rounded-lg shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                <a href="https://perfectszerviz.hu" target="_blank" rel="noopener noreferrer" aria-label="Nézd meg a Perfect Szerviz weboldalát élőben!">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Perfect Szerviz weboldal bemutatója laptopon" 
+                         loading="lazy"
+                         width="1200"
+                         height="800"
+                         class="w-full h-auto object-cover">
+                </a>
+                <div class="p-8">
+                    <div class="mb-4">
+                        <span class="inline-block bg-brand-orange/10 text-brand-orange text-xs font-semibold mr-2 px-2.5 py-1 rounded-full">Webdesign</span>
+                        <span class="inline-block bg-brand-orange/10 text-brand-orange text-xs font-semibold mr-2 px-2.5 py-1 rounded-full">Helyi SEO</span>
+                        <span class="inline-block bg-brand-orange/10 text-brand-orange text-xs font-semibold px-2.5 py-1 rounded-full">Konverzió Optimalizálás</span>
+                    </div>
+                    <h3 class="font-condensed text-2xl font-bold text-brand-blue mb-2">
+                        Perfect Szerviz - Új Generációs Ügyfélszerzés
+                    </h3>
+                    <p class="text-gray-600 mb-6">
+                        Az elavult, mobilra nem optimalizált weboldal helyett egy modern, gyors és konverziófókuszú digitális névjegyet hoztunk létre, ami folyamatosan szállítja az új árajánlatkéréseket.
+                    </p>
+                    <a href="https://perfectszerviz.hu" target="_blank" rel="noopener noreferrer" class="inline-block bg-brand-orange text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-orange-500 transition-all duration-300 transform hover:scale-105" aria-label="Perfect Szerviz weboldal megtekintése">
+                        Megnézem élőben &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                <a href="https://kreativotthon.hu" target="_blank" rel="noopener noreferrer" aria-label="Nézd meg a Kreatív Otthon Webshop weboldalát élőben!">
+                    <img src="https://images.unsplash.com/photo-1600880292210-85938c02a245?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Kreatív Otthon Webshop termékoldala laptopon és mobiltelefonon" 
+                         loading="lazy"
+                         width="1200"
+                         height="800"
+                         class="w-full h-auto object-cover">
+                </a>
+                <div class="p-8">
+                    <div class="mb-4">
+                        <span class="inline-block bg-brand-orange/10 text-brand-orange text-xs font-semibold mr-2 px-2.5 py-1 rounded-full">Webshop Fejlesztés</span>
+                        <span class="inline-block bg-brand-orange/10 text-brand-orange text-xs font-semibold mr-2 px-2.5 py-1 rounded-full">E-kereskedelem</span>
+                        <span class="inline-block bg-brand-orange/10 text-brand-orange text-xs font-semibold px-2.5 py-1 rounded-full">UX/UI Design</span>
+                    </div>
+                    <h3 class="font-condensed text-2xl font-bold text-brand-blue mb-2">
+                        Kreatív Otthon - Vásárlói Élmény a Középpontban
+                    </h3>
+                    <p class="text-gray-600 mb-6">
+                        Egy teljesen egyedi webshopot építettünk, ami nemcsak a termékeket mutatja be gyönyörűen, de a vásárlási folyamatot is élménnyé teszi, jelentősen csökkentve a kosárelhagyást.
+                    </p>
+                    <a href="https://kreativotthon.hu" target="_blank" rel="noopener noreferrer" class="inline-block bg-brand-orange text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-orange-500 transition-all duration-300 transform hover:scale-105" aria-label="Kreatív Otthon Webshop megtekintése">
+                        Megnézem élőben &rarr;
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!--SABLONOK-->
+<section id="weboldal-sablonok" class="bg-white py-20" aria-labelledby="weboldal-sablonok-heading">
+    <div class="container mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 id="weboldal-sablonok-heading" class="font-condensed text-4xl font-bold text-brand-blue mb-4">
+                Profi Weboldal Készítés Sablonokból, Meglepetések Nélkül
+            </h2>
+            <p class="text-lg text-gray-600">
+                Válogass **konverzióra optimalizált, reszponzív weboldal sablonjaink** közül! Válaszd ki a stílusodhoz és céljaidhoz illő modern dizájnt, mi pedig **villámgyorsan, fix áron testreszabjuk** a te egyedi tartalmaiddal és adataiddal. Indítsd el online jelenlétedet hatékonyan!
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <article class="border border-gray-200 rounded-lg shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                <a href="/sablonok/modern-szolgaltato-demo" target="_blank" rel="noopener noreferrer" aria-label="A Modern Szolgáltató weboldal sablon élő demója">
+                    <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Modern, professzionális szolgáltató weboldal sablon laptopon és mobilon" 
+                         loading="lazy"
+                         width="800"
+                         height="500"
+                         class="w-full h-auto object-cover aspect-video">
+                </a>
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="font-condensed text-2xl font-bold text-brand-blue">A Modern Szolgáltató Sablon</h3>
+                    <p class="text-sm text-gray-500 mb-4">Ideális választás **tanácsadóknak, irodáknak, szabadúszóknak és szakértőknek**, akik modern online jelenlétet szeretnének.</p>
+                    <p class="font-condensed text-4xl font-bold text-gray-800 mb-6">Fix Ár: 180.000 Ft</p>
+                    <div class="mt-auto flex flex-col sm:flex-row gap-2">
+                        <a href="/sablonok/modern-szolgaltato-demo" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-white border-2 border-brand-blue text-brand-blue font-bold py-3 px-4 rounded-lg hover:bg-brand-blue hover:text-white transition-colors duration-300" aria-label="Élő Demo megtekintése: A Modern Szolgáltató">
+                            Élő Demo
+                        </a>
+                        <a href="#kapcsolat?sablon=modern-szolgaltato" class="w-full text-center bg-brand-orange text-white font-bold py-3 px-4 rounded-lg hover:bg-orange-500 transition-colors duration-300" aria-label="Ezt a sablont választom: A Modern Szolgáltató">
+                            Ezt választom
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="border border-gray-200 rounded-lg shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                <a href="/sablonok/vizualis-portfolio-demo" target="_blank" rel="noopener noreferrer" aria-label="A Vizuális Portfólió weboldal sablon élő demója">
+                    <img src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?q=80&w=2672&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Kreatív vizuális portfólió weboldal sablon számítógépen és mobilon" 
+                         loading="lazy"
+                         width="800"
+                         height="500"
+                         class="w-full h-auto object-cover aspect-video">
+                </a>
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="font-condensed text-2xl font-bold text-brand-blue">A Vizuális Portfólió Sablon</h3>
+                    <p class="text-sm text-gray-500 mb-4">Kiváló választás **fotósoknak, grafikus dizájnereknek, művészeknek és minden vizuális alkotónak**, aki bemutatná munkáit.</p>
+                    <p class="font-condensed text-4xl font-bold text-gray-800 mb-6">Fix Ár: 180.000 Ft</p>
+                    <div class="mt-auto flex flex-col sm:flex-row gap-2">
+                        <a href="/sablonok/vizualis-portfolio-demo" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-white border-2 border-brand-blue text-brand-blue font-bold py-3 px-4 rounded-lg hover:bg-brand-blue hover:text-white transition-colors duration-300" aria-label="Élő Demo megtekintése: A Vizuális Portfólió">
+                            Élő Demo
+                        </a>
+                        <a href="#kapcsolat?sablon=vizualis-portfolio" class="w-full text-center bg-brand-orange text-white font-bold py-3 px-4 rounded-lg hover:bg-orange-500 transition-colors duration-300" aria-label="Ezt a sablont választom: A Vizuális Portfólió">
+                            Ezt választom
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="border border-gray-200 rounded-lg shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                <a href="/sablonok/helyi-kisvallalkozas-demo" target="_blank" rel="noopener noreferrer" aria-label="A Helyi Kisvállalkozás weboldal sablon élő demója">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                         alt="Könnyen kezelhető weboldal sablon helyi kisvállalkozásoknak" 
+                         loading="lazy"
+                         width="800"
+                         height="500"
+                         class="w-full h-auto object-cover aspect-video">
+                </a>
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="font-condensed text-2xl font-bold text-brand-blue">A Helyi Kisvállalkozás Sablon</h3>
+                    <p class="text-sm text-gray-500 mb-4">Tökéletes megoldás **éttermeknek, üzleteknek, fodrászatoknak és minden helyi szolgáltatónak**.</p>
+                    <p class="font-condensed text-4xl font-bold text-gray-800 mb-6">Fix Ár: 180.000 Ft</p>
+                    <div class="mt-auto flex flex-col sm:flex-row gap-2">
+                        <a href="/sablonok/helyi-kisvallalkozas-demo" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-white border-2 border-brand-blue text-brand-blue font-bold py-3 px-4 rounded-lg hover:bg-brand-blue hover:text-white transition-colors duration-300" aria-label="Élő Demo megtekintése: A Helyi Kisvállalkozás">
+                            Élő Demo
+                        </a>
+                        <a href="#kapcsolat?sablon=helyi-kisvallalkozas" class="w-full text-center bg-brand-orange text-white font-bold py-3 px-4 rounded-lg hover:bg-orange-500 transition-colors duration-300" aria-label="Ezt a sablont választom: A Helyi Kisvállalkozás">
+                            Ezt választom
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+    </div>
+</section>
+
+<!--CTA-->
+<section id="egyedi-cta" class="relative text-white" style="background: linear-gradient(to bottom right, #2563eb, #1E3A8A);" aria-labelledby="egyedi-cta-heading">
+    
+    <div class="container mx-auto px-6 py-24 md:py-32 text-center relative z-10">
+        <h2 id="egyedi-cta-heading" class="font-condensed text-4xl md:text-5xl font-bold mb-4">
+            Valami teljesen egyedire vágysz?
+        </h2>
+        <p class="text-lg text-gray-200 max-w-2xl mx-auto mb-10">
+            A sablonok remek kiindulópontot jelentenek, de a legjobb ötletek néha egyedi megvalósítást igényelnek. Ha a te fejedben is speciális funkció vagy egy komplexebb projekt képe rajzolódik ki, ne habozz!
+        </p>
+        <a href="#kapcsolat" class="inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-lg shadow-xl text-lg transform transition-transform duration-300 hover:scale-105 hover:bg-orange-500" aria-label="Beszéljünk egyedi ötleteidről és kérj személyre szabott árajánlatot">
+            Beszéljünk az ötleteidről! <span class="ml-2" aria-hidden="true">&rarr;</span>
+        </a>
+    </div>
+
+    <div class="absolute bottom-0 left-0 w-full h-16 md:h-24" aria-hidden="true">
+       <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+           <path fill="#F3F4F6" d="M0,192L48,176C96,160,192,128,288,133.3C384,139,480,181,576,186.7C672,192,768,160,864,144C960,128,1056,128,1152,149.3C1248,171,1344,213,1392,234.7L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+       </svg>
+    </div>
+</section>
+
+<!--FAQ-->
+<section id="gyik" style="background: linear-gradient(to bottom, #F3F4F6, #FFFFFF);" class="py-20" aria-labelledby="gyik-heading">
+    <div class="container mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 id="gyik-heading" class="font-condensed text-4xl font-bold text-brand-blue mb-4">
+                Gyakran Ismételt Kérdések
+            </h2>
+            <p class="text-lg text-gray-600">
+                Összegyűjtöttük a leggyakoribb kérdéseket, hogy segítsünk a döntésben. Ha nem találod a választ, <a href="#kapcsolat" class="font-semibold text-brand-blue hover:text-brand-orange transition-colors underline decoration-brand-orange/50 hover:decoration-brand-orange decoration-2 underline-offset-4" aria-label="Lépjen velünk kapcsolatba a Gyakran Ismételt Kérdésekkel kapcsolatban">vedd fel velünk a kapcsolatot!</a>
+            </p>
+        </div>
+
+        <div class="max-w-3xl mx-auto" id="faq-accordion" role="list"> 
+            <div class="border-b border-gray-200 py-4" role="listitem"> 
+                <h3 class="font-condensed text-xl font-bold text-black mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-1" id="faq-question-1">
+                        Mennyi idő alatt készül el egy weboldal?
+                        <svg class="faq-icon h-6 w-6 text-black flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </button>
+                </h3>
+                <div id="faq-answer-1" class="faq-answer overflow-hidden max-h-0 transition-all duration-500 ease-in-out" role="region" aria-labelledby="faq-question-1">
+                    <p class="pt-4 text-gray-600">
+                        Ez nagyban függ a projekt összetettségétől. Egy egyszerűbb, sablon alapú bemutatkozó oldal akár 1-2 hét alatt elkészülhet, míg egy teljesen egyedi, sok funkciós weboldal vagy webshop fejlesztése 4-8 hetet vagy többet is igénybe vehet. A közös munka elején mindig egy pontos, reális ütemtervet adunk.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-b border-gray-200 py-4" role="listitem">
+                <h3 class="font-condensed text-xl font-bold text-black mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-2" id="faq-question-2">
+                        Mennyibe kerül egy egyedi weboldal?
+                        <svg class="faq-icon h-6 w-6 text-black flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </button>
+                </h3>
+                <div id="faq-answer-2" class="faq-answer overflow-hidden max-h-0 transition-all duration-500 ease-in-out" role="region" aria-labelledby="faq-question-2">
+                    <p class="pt-4 text-gray-600">
+                        Minden projekt más, ezért nincsenek fix "dobozos" áraink az egyedi fejlesztésre. Az ár függ az oldalak számától, a funkciók komplexitásától (pl. webshop, foglalási rendszer), és az egyedi dizájn igényeitől. Az első, ingyenes konzultáció után egy részletes, tételes árajánlatot készítünk, rejtett költségek nélkül.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="border-b border-gray-200 py-4" role="listitem">
+                <h3 class="font-condensed text-xl font-bold text-black mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-3" id="faq-question-3">
+                        Mi történik a weboldal indulása után?
+                        <svg class="faq-icon h-6 w-6 text-black flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </button>
+                </h3>
+                <div id="faq-answer-3" class="faq-answer overflow-hidden max-h-0 transition-all duration-500 ease-in-out" role="region" aria-labelledby="faq-question-3">
+                    <p class="pt-4 text-gray-600">
+                        A közös munka nem ér véget az "élesítéssel"! Minden általunk készített oldalhoz biztosítunk egy rövid oktatást a kezeléséről. Ezen felül ajánlunk havidíjas karbantartási és támogatási csomagokat is, amik biztosítják a weboldalad folyamatos biztonságát, frissítéseit és zökkenőmentes működését, hogy neked csak a vállalkozásoddal kelljen foglalkoznod.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-b border-gray-200 py-4" role="listitem">
+                <h3 class="font-condensed text-xl font-bold text-black mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-4" id="faq-question-4">
+                        Garanciát vállaltok az eredményekre?
+                        <svg class="faq-icon h-6 w-6 text-black flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </button>
+                </h3>
+                <div id="faq-answer-4" class="faq-answer overflow-hidden max-h-0 transition-all duration-500 ease-in-out" role="region" aria-labelledby="faq-question-4">
+                    <p class="pt-4 text-gray-600">
+                        A marketingben aki konkrét számokat (pl. "első hely a Google-ben") garantál, az valószínűleg nem mond igazat. Amire viszont 100% garanciát vállalunk, az a szakértelmünk, az átláthatóság, a modern technológiák használata és az, hogy minden tudásunkkal és energiánkkal a te céljaidért fogunk dolgozni. Az eredményeket folyamatosan mérjük és optimalizáljuk, hogy a lehető legjobb megtérülést (ROI) érjük el.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="border-b border-gray-200 py-4" role="listitem">
+                <h3 class="font-condensed text-xl font-bold text-black mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-5" id="faq-question-5">
+                        Hogyan kezdjünk bele a közös munkába?
+                        <svg class="faq-icon h-6 w-6 text-black flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </button>
+                </h3>
+                <div id="faq-answer-5" class="faq-answer overflow-hidden max-h-0 transition-all duration-500 ease-in-out" role="region" aria-labelledby="faq-question-5">
+                    <p class="pt-4 text-gray-600">
+                        Az első lépés a legkönnyebb: kattints a "Kapcsolat" gombra, és írj nekünk egy rövid üzenetet az ötleteidről, vagy kérj egy ingyenes, kötelezettségmentes konzultációt. Egy rövid beszélgetés után már sokkal tisztábban fogod látni a lehetőségeidet!
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-b border-gray-200 py-4" role="listitem">
+                <h3 class="font-condensed text-xl font-bold text-black mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-6" id="faq-question-6">
+                        Mikor várhatok eredményeket az online marketingtől?
+                        <svg class="faq-icon h-6 w-6 text-black flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </button>
+                </h3>
+                <div id="faq-answer-6" class="faq-answer overflow-hidden max-h-0 transition-all duration-500 ease-in-out" role="region" aria-labelledby="faq-question-6">
+                    <p class="pt-4 text-gray-600">
+                        Ez egy kulcsfontosságú kérdés. A fizetett hirdetések (pl. Google Ads, Facebook hirdetések) szinte azonnali eredményeket, látogatókat hozhatnak már napokon belül. Ezzel szemben a keresőoptimalizálás (SEO) egy hosszútávú befektetés; itt az első komolyabb, organikus eredmények általában 3-6 hónap után kezdenek látszani. A legjobb stratégia általában a kettő kombinációja.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-b border-gray-200 py-4" role="listitem">
+                <h3 class="font-condensed text-xl font-bold text-black mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-7" id="faq-question-7">
+                        Már van egy logóm. Miért van szükségem teljes arculatra?
+                        <svg class="faq-icon h-6 w-6 text-black flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </button>
+                </h3>
+                <div id="faq-answer-7" class="faq-answer overflow-hidden max-h-0 transition-all duration-500 ease-in-out" role="region" aria-labelledby="faq-question-7">
+                    <p class="pt-4 text-gray-600">
+                        A logó egy fantasztikus első lépés, de az arculat a márka teljes vizuális személyisége. Magában foglalja a logó mellett a meghatározott színeket, betűtípusokat, a képi világ stílusát és a kommunikációs hangnemet is. Egy következetes, egységes arculat minden felületen (weboldal, social media, névjegykártya) növeli a márka felismerhetőségét és a professzionális megítélését, mélyítve a vásárlói bizalmat.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-b border-gray-200 py-4" role="listitem">
+                <h3 class="font-condensed text-xl font-bold text-black mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-8" id="faq-question-8">
+                        Csak induló vállalkozásokkal dolgoztok?
+                        <svg class="faq-icon h-6 w-6 text-black flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </button>
+                </h3>
+                <div id="faq-answer-8" class="faq-answer overflow-hidden max-h-0 transition-all duration-500 ease-in-out" role="region" aria-labelledby="faq-question-8">
+                    <p class="pt-4 text-gray-600">
+                        Egyáltalán nem! Büszkén dolgozunk együtt a legkülönfélébb ügyfelekkel, az egyszemélyes induló vállalkozásoktól kezdve a növekvő KKV-ken át a már stabilan működő cégekig, akik szeretnék felfrissíteni a digitális jelenlétüket. A közös pont nem a cég mérete, hanem a növekedés iránti elkötelezettség.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const faqAccordion = document.getElementById('faq-accordion');
+    if (faqAccordion) {
+        const toggles = faqAccordion.querySelectorAll('.faq-toggle');
+
+        toggles.forEach(toggle => {
+            const h3Element = toggle.closest('h3'); // Megtaláljuk a szülő h3 elemet
+            const icon = toggle.querySelector('.faq-icon');
+            const answer = document.getElementById(toggle.getAttribute('aria-controls'));
+
+            toggle.addEventListener('click', () => {
+                const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+                // Bezárja az összes többi nyitott elemet
+                toggles.forEach(otherToggle => {
+                    const otherAnswer = document.getElementById(otherToggle.getAttribute('aria-controls'));
+                    const otherIcon = otherToggle.querySelector('.faq-icon');
+                    const otherH3Element = otherToggle.closest('h3');
+
+                    if (otherToggle !== toggle && otherToggle.getAttribute('aria-expanded') === 'true') {
+                        otherAnswer.style.maxHeight = null;
+                        otherToggle.setAttribute('aria-expanded', 'false');
+                        otherIcon.classList.remove('rotate-180');
+                        otherH3Element.classList.remove('text-brand-blue'); // Kék szín eltávolítása
+                        otherH3Element.classList.add('text-black'); // Fekete szín visszaállítása
+                        otherIcon.classList.remove('text-brand-blue'); // Kék ikon szín eltávolítása
+                        otherIcon.classList.add('text-black'); // Fekete ikon szín visszaállítása
+                    }
+                });
+
+                // Kinyitja vagy becsukja a kattintott elemet
+                if (!isExpanded) {
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                    toggle.setAttribute('aria-expanded', 'true');
+                    icon.classList.add('rotate-180');
+                    h3Element.classList.remove('text-black'); // Fekete szín eltávolítása
+                    h3Element.classList.add('text-brand-blue'); // Kék szín beállítása
+                    icon.classList.remove('text-black'); // Fekete ikon szín eltávolítása
+                    icon.classList.add('text-brand-blue'); // Kék ikon szín beállítása
+
+                } else {
+                    answer.style.maxHeight = null;
+                    toggle.setAttribute('aria-expanded', 'false');
+                    icon.classList.remove('rotate-180');
+                    h3Element.classList.remove('text-brand-blue'); // Kék szín eltávolítása
+                    h3Element.classList.add('text-black'); // Fekete szín visszaállítása
+                    icon.classList.remove('text-brand-blue'); // Kék ikon szín eltávolítása
+                    icon.classList.add('text-black'); // Fekete ikon szín visszaállítása
+                }
+            });
+        });
+    }
+});
+</script>
+
+<!--CONTACT-->
+<?php
+$contact_message_sent = false;
+$contact_errors = [];
+$newsletter_message_sent = false;
+$newsletter_errors = [];
+
+// Címzettek e-mail címei - KÉRJÜK, CSERÉLD KI A SAJÁT E-MAIL CÍMEDRE!
+$contact_recipient = "a-te-email-cimed@gmail.com"; 
+$newsletter_recipient = "a-te-hirlevel-cimed@gmail.com"; 
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Kapcsolati űrlap feldolgozása
+    if (isset($_POST['form_type']) && $_POST['form_type'] === 'contact') {
+        $name = filter_var(trim($_POST["name"]), FILTER_SANITIZE_STRING);
+        $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
+        $topic = filter_var(trim($_POST["topic"]), FILTER_SANITIZE_STRING);
+        $message = filter_var(trim($_POST["message"]), FILTER_SANITIZE_STRING);
+        $privacy = isset($_POST["privacy"]);
+
+        if (empty($name)) {
+            $contact_errors[] = "A név megadása kötelező.";
+        }
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $contact_errors[] = "Érvénytelen e-mail cím.";
+        }
+        if (empty($message)) {
+            $contact_errors[] = "Az üzenet mező nem lehet üres.";
+        }
+        if (!$privacy) {
+            $contact_errors[] = "El kell fogadnod az adatvédelmi tájékoztatót.";
+        }
+        
+        if (empty($contact_errors)) {
+            $subject = "Új üzenet a Studio BGK weboldalról - Téma: $topic";
+            $email_content = "Név: $name\n";
+            $email_content .= "E-mail: $email\n\n";
+            $email_content .= "Téma: $topic\n\n";
+            $email_content .= "Üzenet:\n$message\n";
+            
+            $headers = "From: $name <$email>";
+            
+            if (mail($contact_recipient, $subject, $email_content, $headers)) {
+                $contact_message_sent = true;
+            } else {
+                $contact_errors[] = "Hiba történt az üzenet küldése közben. Kérjük, próbáld újra később.";
+            }
+        }
+    } 
+    // Hírlevél feliratkozás űrlap feldolgozása
+    elseif (isset($_POST['form_type']) && $_POST['form_type'] === 'newsletter') {
+        $newsletter_email = filter_var(trim($_POST["footer_email"]), FILTER_SANITIZE_EMAIL);
+
+        if (!filter_var($newsletter_email, FILTER_VALIDATE_EMAIL)) {
+            $newsletter_errors[] = "Érvénytelen e-mail cím a feliratkozáshoz.";
+        }
+
+        if (empty($newsletter_errors)) {
+            $subject = "Új hírlevél feliratkozás a Studio BGK weboldalon";
+            $email_content = "Az alábbi e-mail cím iratkozott fel a hírlevélre:\n";
+            $email_content .= "E-mail: $newsletter_email\n";
+            
+            // Itt menthetnéd el az e-mail címet egy adatbázisba vagy fájlba is
+            // Pl.: file_put_contents('newsletter_subscribers.txt', $newsletter_email . "\n", FILE_APPEND);
+
+            $headers = "From: Newsletter Signup <no-reply@yourdomain.com>"; // CSERÉLD A SAJÁT DOMAINRE!
+            
+            if (mail($newsletter_recipient, $subject, $email_content, $headers)) {
+                $newsletter_message_sent = true;
+            } else {
+                $newsletter_errors[] = "Hiba történt a feliratkozás közben. Kérjük, próbáld újra később.";
+            }
+        }
+    }
+}
+?>
+
+<section id="kapcsolat" class="bg-white py-20" aria-labelledby="kapcsolat-heading">
+    <div class="container mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 id="kapcsolat-heading" class="font-condensed text-4xl font-bold text-brand-blue mb-4">
+                Készen állsz a következő lépésre?
+            </h2>
+            <p class="text-lg text-gray-600">
+                Akár egy konkrét ötleted van, akár csak egy beszélgetésre vágysz a digitális lehetőségekről, itt az ideje, hogy tegyünk egy lépést. Valósítsuk meg együtt!
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-16 items-start">
+
+            <div class="space-y-8">
+                <div>
+                    <h3 class="font-condensed text-2xl font-bold text-brand-blue mb-2">Beszéljünk!</h3>
+                    <p class="text-gray-600">
+                        Töltsd ki a mellette lévő űrlapot, és hamarosan felveszem veled a kapcsolatot egy ingyenes, kötelezettségmentes konzultációért. Semmi nyomás, csak egy őszinte beszélgetés az ötleteidről.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-condensed text-xl font-bold text-brand-blue mb-3">Direkt elérhetőség</h4>
+                    <a href="mailto:hello@studiobgk.com" class="inline-flex items-center text-gray-600 hover:text-brand-blue transition-colors" aria-label="E-mail cím: hello@studiobgk.com">
+                        <svg class="h-6 w-6 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                        </svg>
+                        <span>hello@studiobgk.com</span>
+                    </a>
+                </div>
+                <div>
+                    <h4 class="font-condensed text-xl font-bold text-brand-blue mb-3">Kövess minket</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-blue transition-colors" aria-label="Studio BGK a LinkedIn-en"><svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-blue transition-colors" aria-label="Studio BGK az Instagramon"><svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.059 1.689.073 4.948.073s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44c0-.795-.645-1.44-1.441-1.44z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-light-bg p-8 rounded-lg shadow-lg">
+                <form action="#kapcsolat" method="POST" class="space-y-6" novalidate>
+                    <input type="hidden" name="form_type" value="contact"> <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Név</label>
+                        <input type="text" name="name" id="name" required placeholder="Teljes név" autocomplete="name" class="w-full p-3 bg-white border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none transition" aria-describedby="name-error">
+                    </div>
+                     <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-mail cím</label>
+                        <input type="email" name="email" id="email" required placeholder="E-mail cím" autocomplete="email" class="w-full p-3 bg-white border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none transition" aria-describedby="email-error">
+                    </div>
+                     <div>
+                        <label for="topic" class="block text-sm font-medium text-gray-700 mb-1">Téma</label>
+                        <select id="topic" name="topic" class="w-full p-3 bg-white border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none transition">
+                            <option value="">Miben segíthetek?</option> 
+                            <option>Egyedi Weboldal Fejlesztés</option>
+                            <option>Weboldal Sablon</option>
+                            <option>Online Marketing</option>
+                            <option>Általános Kérdés</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Üzenet</label>
+                        <textarea name="message" id="message" rows="5" required placeholder="Az üzeneted helye..." class="w-full p-3 bg-white border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none transition" aria-describedby="message-error"></textarea>
+                    </div>
+                     <div class="flex items-center">
+                        <input id="privacy" name="privacy" type="checkbox" required class="h-4 w-4 text-brand-orange rounded border-gray-300 focus:ring-brand-orange">
+                        <label for="privacy" class="ml-2 block text-sm text-gray-600">Elfogadom az <a href="#" class="font-medium text-brand-blue hover:underline">Adatvédelmi Tájékoztatót</a>.</label>
+                    </div>
+                    <div>
+                         <button type="submit" class="w-full bg-brand-orange text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-orange-500 transition-all duration-300 transform hover:scale-105">
+                            Üzenet elküldése
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--FOOTER-->
+<footer id="footer" class="bg-brand-blue text-gray-300" aria-labelledby="footer-heading">
+    <div class="container mx-auto px-6 py-16">
+        <h2 id="footer-heading" class="sr-only">Lábléc</h2> <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-12 text-center md:text-left"> <div class="lg:col-span-1 flex flex-col items-center md:items-start"> <a href="#header" class="font-condensed text-2xl font-bold text-white tracking-wider" aria-label="Studio BGK logó és kezdőlapra ugrás">Studio BGK</a>
+                <p class="mt-4 text-sm text-gray-400 max-w-xs"> Digitális Partner a Növekedésben. Stratégiától a megvalósításig segítünk, hogy a márkád kiemelkedjen a digitális zajból.
+                </p>
+                <div class="mt-6 flex space-x-4">
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="Studio BGK a LinkedIn-en"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="Studio BGK az Instagramon"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.059 1.689.073 4.948.073s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44c0-.795-.645-1.44-1.441-1.44z"/></svg></a>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center md:items-start"> <h3 class="font-condensed text-lg font-bold text-white tracking-wider mb-4" id="gyorslinkek-heading">Gyorslinkek</h3>
+                <nav class="space-y-3" aria-labelledby="gyorslinkek-heading">
+                    <a href="#rolam" class="block hover:text-white transition-colors">Rólam</a>
+                    <a href="#services" class="block hover:text-white transition-colors">Szolgáltatások</a>
+                    <a href="#eredmenyek" class="block hover:text-white transition-colors">Eredmények</a>
+                    <a href="#gyik" class="block hover:text-white transition-colors">GY.I.K.</a>
+                    <a href="#" class="block hover:text-white transition-colors">Blog</a>
+                </nav>
+            </div>
+
+            <div class="flex flex-col items-center md:items-start"> <h3 class="font-condensed text-lg font-bold text-white tracking-wider mb-4" id="informaciok-heading">Információk</h3>
+                <nav class="space-y-3" aria-labelledby="informaciok-heading">
+                    <a href="#" class="block hover:text-white transition-colors">Adatvédelmi Tájékoztató</a>
+                    <a href="#" class="block hover:text-white transition-colors">Általános Szerződési Feltételek</a>
+                    <a href="#kapcsolat" class="block hover:text-white transition-colors">Kapcsolat</a>
+                </nav>
+            </div>
+
+            <div class="flex flex-col items-center md:items-start"> <h3 class="font-condensed text-lg font-bold text-white tracking-wider mb-4" id="hirlevel-heading">Ne maradj le semmiről!</h3>
+                <p class="mt-4 text-sm text-gray-400 max-w-xs"> Iratkozz fel exkluzív marketing tippekért, friss hírekért és esettanulmányokért!
+                </p>
+                <form action="#footer" method="POST" class="mt-4 w-full max-w-xs" novalidate> <input type="hidden" name="form_type" value="newsletter"> <div class="flex items-center w-full">
+                        <label for="footer-email" class="sr-only">E-mail cím</label>
+                        <input id="footer-email" name="footer_email" type="email" required placeholder="E-mail címed" autocomplete="email" class="w-full bg-blue-900/50 text-white placeholder-gray-400 border border-blue-700 rounded-l-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-orange transition">
+                        <button type="submit" class="bg-brand-orange text-white p-3 rounded-r-md hover:bg-orange-500 transition-colors" aria-label="Feliratkozás hírlevélre">
+                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="mt-16 pt-8 border-t border-blue-800 text-center text-sm text-gray-400">
+            <p>&copy; <span id="current-year"></span> Studio BGK. Minden jog fenntartva. Készítette a digitális siker.</p>
+        </div>
+    </div>
+</footer>
+
+<div id="feedbackModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="bg-white rounded-lg shadow-xl p-6 max-w-sm w-full relative">
+        <button type="button" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-brand-orange rounded-md" aria-label="Modal bezárása" id="closeModal">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <h3 id="modalTitle" class="font-condensed text-2xl font-bold text-brand-blue mb-4"></h3>
+        <div id="modalContent" class="text-gray-700"></div>
+        <div class="mt-6 text-right">
+            <button type="button" class="bg-brand-orange text-white font-bold py-2 px-4 rounded-lg hover:bg-orange-500 transition-colors" id="modalOkButton">
+                Rendben
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Évszám frissítése a láblécben
+    const currentYearSpan = document.getElementById('current-year');
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+    }
+
+    // FAQ Accordion JavaScript (az előzőekben már megadtam)
+    // Ide másold be a teljes, működő FAQ JS kódodat
+
+    const faqAccordion = document.getElementById('faq-accordion');
+    if (faqAccordion) {
+        const toggles = faqAccordion.querySelectorAll('.faq-toggle');
+
+        toggles.forEach(toggle => {
+            const h3Element = toggle.closest('h3'); 
+            const icon = toggle.querySelector('.faq-icon');
+            const answer = document.getElementById(toggle.getAttribute('aria-controls'));
+
+            toggle.addEventListener('click', () => {
+                const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+                toggles.forEach(otherToggle => {
+                    const otherAnswer = document.getElementById(otherToggle.getAttribute('aria-controls'));
+                    const otherIcon = otherToggle.querySelector('.faq-icon');
+                    const otherH3Element = otherToggle.closest('h3');
+
+                    if (otherToggle !== toggle && otherToggle.getAttribute('aria-expanded') === 'true') {
+                        otherAnswer.style.maxHeight = null;
+                        otherToggle.setAttribute('aria-expanded', 'false');
+                        otherIcon.classList.remove('rotate-180');
+                        otherH3Element.classList.remove('text-brand-blue'); 
+                        otherH3Element.classList.add('text-black'); 
+                        otherIcon.classList.remove('text-brand-blue'); 
+                        otherIcon.classList.add('text-black'); 
+                    }
+                });
+
+                if (!isExpanded) {
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                    toggle.setAttribute('aria-expanded', 'true');
+                    icon.classList.add('rotate-180');
+                    h3Element.classList.remove('text-black'); 
+                    h3Element.classList.add('text-brand-blue'); 
+                    icon.classList.remove('text-black'); 
+                    icon.classList.add('text-brand-blue'); 
+
+                } else {
+                    answer.style.maxHeight = null;
+                    toggle.setAttribute('aria-expanded', 'false');
+                    icon.classList.remove('rotate-180');
+                    h3Element.classList.remove('text-brand-blue'); 
+                    h3Element.classList.add('text-black'); 
+                    icon.classList.remove('text-brand-blue'); 
+                    icon.classList.add('text-black'); 
+                }
+            });
+        });
+    }
+
+    // Modal kezelő JavaScript
+    const feedbackModal = document.getElementById('feedbackModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalContent = document.getElementById('modalContent');
+    const closeModalButton = document.getElementById('closeModal');
+    const modalOkButton = document.getElementById('modalOkButton');
+
+    function showModal(title, content) {
+        modalTitle.textContent = title;
+        modalContent.innerHTML = content;
+        feedbackModal.classList.remove('hidden');
+        feedbackModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('overflow-hidden'); 
+    }
+
+    function hideModal() {
+        feedbackModal.classList.add('hidden');
+        feedbackModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('overflow-hidden');
+    }
+
+    closeModalButton.addEventListener('click', hideModal);
+    modalOkButton.addEventListener('click', hideModal);
+    feedbackModal.addEventListener('click', function(e) {
+        if (e.target === feedbackModal) { 
+            hideModal();
+        }
+    });
+
+    // Kezeli a PHP által beállított visszajelzéseket (kapcsolati űrlap)
+    <?php if ($contact_message_sent): ?>
+        showModal('Sikeres üzenetküldés!', '<p>Köszönjük a megkeresést! Üzenetedet megkaptuk, hamarosan válaszolunk.</p>');
+        const contactForm = document.querySelector('#kapcsolat form');
+        if (contactForm) {
+            contactForm.reset();
+        }
+    <?php elseif (!empty($contact_errors)): ?>
+        showModal('Hiba történt!', 
+            '<p class="mb-2">Az üzenet küldése sikertelen volt az alábbi hibák miatt:</p><ul><?php foreach ($contact_errors as $error): ?><li>- <?php echo htmlspecialchars($error); ?></li><?php endforeach; ?></ul>'
+        );
+    <?php endif; ?>
+
+    // Kezeli a PHP által beállított visszajelzéseket (hírlevél feliratkozás)
+    <?php if ($newsletter_message_sent): ?>
+        showModal('Köszönjük a feliratkozást!', '<p>Sikeresen feliratkoztál hírlevelünkre! Hamarosan küldjük az első értékes tippeket.</p>');
+        const newsletterForm = document.querySelector('#footer form');
+        if (newsletterForm) {
+            newsletterForm.reset();
+        }
+    <?php elseif (!empty($newsletter_errors)): ?>
+        showModal('Hiba történt a feliratkozáskor!', 
+            '<p class="mb-2">A feliratkozás sikertelen volt az alábbi hibák miatt:</p><ul><?php foreach ($newsletter_errors as $error): ?><li>- <?php echo htmlspecialchars($error); ?></li><?php endforeach; ?></ul>'
+        );
+    <?php endif; ?>
+});
+</script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // === 1. GSAP PLUGIN REGISZTRÁCIÓ ===
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // === 2. VÁLTOZÓK DEFINIÁLÁSA ===
+        const header = document.getElementById('header');
+        const logo = document.getElementById('logo');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const navLinkHome = document.getElementById('nav-link-home');
+        const hamburgerButton = document.getElementById('hamburger-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuItems = document.querySelectorAll('.mobile-menu-item'); // Mobil menüpontok
+        const iconMenu = document.getElementById('icon-menu');
+        const iconClose = document.getElementById('icon-close');
+        const body = document.body;
+
+        // === 3. GÖRGETÉSRE VÁLTOZÓ FEJLÉC ===
+        ScrollTrigger.create({
+            trigger: "body",
+            start: "20px top",
+            toggleClass: { targets: header, className: "glass-effect" },
+            onToggle: self => {
+                const isScrolled = self.isActive;
+                // A logó és a hamburger gomb színének váltása
+                hamburgerButton.classList.toggle('text-brand-blue', isScrolled);
+                hamburgerButton.classList.toggle('text-white', !isScrolled);
+                // A desktop menü linkjeinek színváltása
+                navLinks.forEach(link => { 
+                    link.classList.toggle('text-gray-600', isScrolled); 
+                    link.classList.toggle('text-white', !isScrolled); 
+                });
+                // A "házikó" ikon színének váltása (ha a nav-link osztályt is használja)
+                if(navLinkHome) {
+                    navLinkHome.classList.toggle('text-gray-600', isScrolled); 
+                    navLinkHome.classList.toggle('text-white', !isScrolled); 
+                }
+            }
+        });
+
+        // === 4. MOBIL MENÜ MŰKÖDÉSE (JAVÍTVA) ===
+        const toggleMenu = () => {
+            const isMenuOpen = !mobileMenu.classList.contains('-translate-x-full');
+            mobileMenu.classList.toggle('-translate-x-full');
+            iconMenu.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
+            hamburgerButton.setAttribute('aria-expanded', !isMenuOpen);
+        };
+
+        hamburgerButton.addEventListener('click', toggleMenu);
+        
+        // JAVÍTÁS: Menü bezárása egy menüpontra kattintva
+        mobileMenuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Csak akkor zár be, ha a menü nyitva van
+                if (!mobileMenu.classList.contains('-translate-x-full')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // === 5. HERO SZEKCIÓ BELÉPŐ ANIMÁCIÓI ===
+        gsap.from('.hero-title', { duration: 1, y: 50, opacity: 0, ease: 'power3.out', delay: 0.5 });
+        gsap.from('.hero-subtitle', { duration: 1, y: 50, opacity: 0, ease: 'power3.out', delay: 0.7 });
+        gsap.from('.hero-cta-group', { duration: 1, y: 50, opacity: 0, ease: 'power3.out', delay: 0.9 });
+        
+        // A Hero szekcióban lévő ELSŐ aláhúzás animációja
+        gsap.to("#underline-span", { // Ellenőrizd, hogy a Hero-ban lévő aláhúzás ID-ja "underline-span"
+            scaleX: 1,
+            duration: 0.8,
+            ease: 'power2.out',
+            delay: 1.2 
+        });
+
+        // === 6. GÖRGETÉSRE AKTIVÁLÓDÓ UNIVERZÁLIS ANIMÁCIÓK ===
+        const revealElements = document.querySelectorAll('.gsap-reveal');
+        revealElements.forEach(el => {
+            gsap.to(el, {
+                opacity: 1,
+                y: 0,
+                visibility: 'visible',
+                duration: 0.8,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none',
+                }
+            });
+        });
+
+        // A 'Probléma' szekcióban lévő MÁSODIK aláhúzás animációja
+        gsap.to("#underline-span-2", {
+            scrollTrigger: { trigger: "#problema-heading", start: "top 85%" },
+            scaleX: 1,
+            duration: 0.8,
+            ease: 'power2.out',
+            delay: 0.5
+        });
+
+        // === 7. 3D SZOLGÁLTATÁS KÁRTYÁK FORGATÁSA KATTINTÁSRA ===
+        const flipCards = document.querySelectorAll('.flip-card');
+        flipCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const cardInner = card.querySelector('.flip-card-inner');
+                cardInner.classList.toggle('is-flipped');
+            });
+        });
+        
+        // === 8. FAQ HARMONIKA MŰKÖDÉSE (JAVÍTVA) ===
+        const faqAccordion = document.getElementById('faq-accordion');
+        if (faqAccordion) {
+            const toggles = faqAccordion.querySelectorAll('.faq-toggle');
+            toggles.forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const answer = document.getElementById(toggle.getAttribute('aria-controls'));
+                    const icon = toggle.querySelector('.faq-icon');
+                    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+                    // Az összes többi elem bezárása
+                    toggles.forEach(otherToggle => {
+                        if (otherToggle !== toggle) {
+                            const otherAnswer = document.getElementById(otherToggle.getAttribute('aria-controls'));
+                            otherAnswer.style.maxHeight = null;
+                            otherToggle.setAttribute('aria-expanded', 'false');
+                            otherToggle.querySelector('.faq-icon').classList.remove('rotate-180');
+                        }
+                    });
+
+                    // A kattintott elem állapotának váltása
+                    if (!isExpanded) {
+                        answer.style.maxHeight = answer.scrollHeight + "px";
+                        toggle.setAttribute('aria-expanded', 'true');
+                        icon.classList.add('rotate-180');
+                    } else {
+                        answer.style.maxHeight = null;
+                        toggle.setAttribute('aria-expanded', 'false');
+                        icon.classList.remove('rotate-180');
+                    }
+                });
+            });
+        }
+        
+    });
+</script>
+</body>
+</html>
