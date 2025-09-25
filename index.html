@@ -120,15 +120,14 @@
                 <img src="assets/images/logo.webp" alt="Studio BGK logó" class="h-10 w-auto">
 </a>
             <ul class="hidden lg:flex items-center justify-center space-x-8">
-                <li><a href="#top" aria-label="Ugrás az oldal tetejére" id="nav-link-home" class="text-white hover:text-brand-orange transition-colors duration-300" title="Főoldal"></a></li>
-                <li><a href="#szolgaltatasok" class="nav-link font-condensed text-lg tracking-wide text-white hover:text-brand-orange transition-colors duration-300">Szolgáltatások</a></li>
-                <li><a href="#miert-en" class="nav-link font-condensed text-lg tracking-wide text-white hover:text-brand-orange transition-colors duration-300">Rólam</a></li>
-                <li><a href="#eredmenyeim" class="nav-link font-condensed text-lg tracking-wide text-white hover:text-brand-orange transition-colors duration-300">Eredmények</a></li>
-                <li><a href="#weboldal-sablonok" class="nav-link font-condensed text-lg tracking-wide text-white hover:text-brand-orange transition-colors duration-300">Weboldal sablonok</a></li>
-                <li><a href="#gyik" class="nav-link font-condensed text-lg tracking-wide text-white hover:text-brand-orange transition-colors duration-300">GYIK</a></li>
+                <li><a href="#top" aria-label="Ugrás az oldal tetejére" id="nav-link-home" class="text-white hover:text-brand-blue transition-colors duration-300" title="Főoldal"></a></li>
+                <li><a href="#szolgaltatasok" class="nav-link font-condensed text-lg tracking-wide text-white hover:text-brand-blue transition-colors duration-300 uppercase">Szolgáltatások</a></li>
+                <li><a href="#miert-en" class="nav-link font-condensed text-lg tracking-wide text-white hover:text-brand-blue transition-colors duration-300 uppercase">Rólam</a></li>
+                <li><a href="#referenciak" class="nav-link font-condensed text-lg tracking-wide text-white hover:text-brand-blue transition-colors duration-300 uppercase">Munkáim</a></li>
+                <li><a href="#gyik" class="nav-link font-condensed text-lg tracking-wide text-white hover:text-brand-blue transition-colors duration-300 uppercase">GYIK</a></li>
             </ul>
             <div class="flex items-center space-x-4">
-                 <a href="#kapcsolat" class="hidden lg:block bg-brand-orange text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-orange-500 transition-all duration-300 transform hover:scale-105">Kapcsolat</a>
+                 <a href="#kapcsolat" class="hidden lg:block bg-brand-orange text-white font-bold py-2 px-6 rounded-lg shadow-lg hover:bg-orange-500 transition-all duration-300 transform hover:scale-105">Kapcsolat</a>
                 <button id="hamburger-button" class="lg:hidden z-50 text-white transition-colors duration-300" aria-label="Menü megnyitása">
                     <svg id="icon-menu" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
                     <svg id="icon-close" class="h-8 w-8 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
@@ -137,13 +136,22 @@
         </nav>
     </header>
 
-<div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-brand-blue/95 backdrop-blur-lg flex-col justify-center items-center space-y-8 text-white text-2xl font-condensed tracking-wider transform -translate-x-full transition-transform duration-500 ease-in-out lg:hidden z-40 flex">
-    <a href="#szolgaltatasok" class="mobile-menu-item">Szolgáltatások</a>
-    <a href="#miert-en" class="mobile-menu-item">Rólam</a>
-    <a href="#eredmenyeim" class="mobile-menu-item">Eredmények</a>
-    <a href="#weboldal-sablonok" class="mobile-menu-item">Weboldal sablonok</a>
-    <a href="#gyik" class="mobile-menu-item">GYIK</a>
-    <a href="#kapcsolat" class="mobile-menu-item mt-8 bg-brand-orange text-white font-bold py-3 px-8 rounded-lg shadow-lg">Kapcsolat</a>
+<div id="mobile-menu" 
+     style="
+        background: 
+            linear-gradient(to bottom right, rgba(37, 99, 235, 0.70), rgba(30, 58, 138, 0.9)),
+            url('/assets/hero/hero-poster.webp');
+        
+        background-size: cover;
+        background-position: center center;
+     " 
+     class="fixed top-0 left-0 w-full h-full backdrop-blur-lg flex-col justify-center items-center space-y-8 text-white text-2xl font-condensed tracking-wider transform -translate-x-full transition-transform duration-500 ease-in-out lg:hidden z-40 flex">
+    
+    <a href="#szolgaltatasok" class="mobile-menu-item uppercase hover:text-gray-400 transition-colors duration-300">Szolgáltatások</a>
+    <a href="#miert-en" class="mobile-menu-item uppercase hover:text-gray-400 transition-colors duration-300">Rólam</a>
+    <a href="#referenciak" class="mobile-menu-item uppercase hover:text-gray-400 transition-colors duration-300">Munkáim</a>
+    <a href="#gyik" class="mobile-menu-item uppercase hover:text-gray-400 transition-colors duration-300">GYIK</a>
+    <a href="#kapcsolat" class="mobile-menu-item mt-8 bg-brand-orange text-white font-bold py-2 px-8 rounded-lg shadow-lg hover:bg-orange-500 transition-all duration-300 transform hover:scale-105">Kapcsolat</a>
 </div>
 
     <main>
@@ -170,10 +178,10 @@
             Teljes körű webfejlesztés és online marketing valódi eredményekkel
         </p>
         <div class="hero-cta-group flex flex-col sm:flex-row justify-center items-center gap-4">
-            <a href="#kapcsolat" class="w-full sm:w-auto bg-brand-orange text-white font-bold py-4 px-8 rounded-lg shadow-xl hover:bg-orange-500 transition-all duration-300 transform hover:scale-105">
+            <a href="#kapcsolat" class="w-full sm:w-auto bg-brand-orange text-white font-bold py-2 px-8 rounded-lg shadow-xl hover:bg-orange-500 transition-all duration-300 transform hover:scale-105">
                 Dolgozzunk Együtt!
             </a>
-            <a href="#szolgaltatasok" class="w-full sm:w-auto bg-white/90 text-brand-blue font-bold py-4 px-8 rounded-lg shadow-xl hover:bg-white transition-all duration-300 transform hover:scale-105">
+            <a href="#ismeros-problema" class="w-full sm:w-auto bg-white/90 text-brand-blue font-bold py-2 px-8 rounded-lg shadow-xl hover:bg-white transition-all duration-300 transform hover:scale-105">
                 Tudj meg többet
             </a>
         </div>
@@ -189,7 +197,7 @@
 </div>
 
 <!--PROBLEM HEADING-->
-<section  style="background: linear-gradient(to bottom, #FFFFFF, #F3F4F6);" class="py-20 relative overflow-hidden" aria-labelledby="problema-heading">
+<section id="ismeros-problema" style="background: linear-gradient(to bottom, #FFFFFF, #F3F4F6);" class="py-20 relative overflow-hidden" aria-labelledby="problema-heading">
     
     <div class="absolute right-0 translate-x-1/2 opacity-10" aria-hidden="true">
          <div class="w-[600px] h-[500px] bg-brand-blue rounded-full filter blur-3xl"></div>
@@ -197,33 +205,34 @@
     
     <div class="container mx-auto px-6 text-center relative z-10">
         <h2 id="problema-heading" class="font-condensed text-4xl md:text-5xl font-bold text-brand-blue mb-4 uppercase">
-Ne pazarold el a pénzedet!
+Ismerős a probléma?
                 
 
         </h2>
         <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-16">
-            Ne hagyd, hogy a legjobb ötleteid és a kemény munkád csendben maradjanak a digitális zajban. Ismerős az érzés?
+            Ma már minden az online világban dől el. Ha az online jelenléted nem egyértelmű, gyors és célra épített, a versenytársaid elviszik a kattintásokat és végül <br><strong class="uppercase">elveszted az ügyfeleket!</strong>
         </p>
 
         <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center text-left">
-            <div class="space-y-6">
+            <div class="space-y-6 text-center md:text-left">
                 <h3 class="font-condensed text-3xl font-bold text-gray-800">
-                    A legjobb termék sem adja el magát
+                    A legjobb termék sem adja el magát!
                 </h3>
                 <p class="text-gray-600">
                     Hiába a kiemelkedő szolgáltatás vagy a minőségi termék, ha a potenciális vevőid egyszerűen nem találnak rád. A digitális térben a figyelemért vívott harcban könnyű elveszni, és a konkurencia egy pillanat alatt leelőz, ha nincs egy jól felépített, tudatos online jelenléted.
                 </p>
-                <p class="text-gray-600 font-medium">
-                    Mi nem csak hirdetéseket készítünk. Stratégiát építünk a zaj köré, hogy a te hangod legyen a leghangosabb.
+                <p class="text-gray-800 font-medium">
+                    Mi nem csak hirdetéseket készítünk... <br>Stratégiát építünk a zaj köré, hogy a Te hangod legyen a leghangosabb!
                 </p>
             </div>
 
             <div class="space-y-8">
                 <div class="flex items-start gap-4">
                     <div class="flex-shrink-0 bg-brand-orange/10 p-3 rounded-full">
-                        <svg class="h-6 w-6 text-brand-orange" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash h-6 w-6 text-brand-orange" viewBox="0 0 16 16">
+  <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+  <path d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2z"/>
+</svg>
                     </div>
                     <div>
                         <h4 class="font-bold text-gray-800 text-lg">Elpazarolt hirdetési pénzek</h4>
@@ -232,9 +241,9 @@ Ne pazarold el a pénzedet!
                 </div>
                 <div class="flex items-start gap-4">
                     <div class="flex-shrink-0 bg-brand-orange/10 p-3 rounded-full">
-                        <svg class="h-6 w-6 text-brand-orange" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m-7.14-4.122a3 3 0 0 0-4.682 2.72 9.094 9.094 0 0 0 3.741.479m7.14-4.122a9.093 9.093 0 0 0-3.741-.479m-3.741.479a9.093 9.093 0 0 0-3.741.479m-4.122-7.14a3 3 0 0 0 2.72 4.682 9.095 9.095 0 0 0 .479-3.741m-4.122 7.14a9.095 9.095 0 0 0-.479 3.741 3 3 0 0 0 4.682-2.72m.479-3.741a9.095 9.095 0 0 0-.479-3.741M12 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                        </svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill h-6 w-6 text-brand-orange" viewBox="0 0 16 16">
+  <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+</svg>
                     </div>
                     <div>
                         <h4 class="font-bold text-gray-800 text-lg">Erősödő konkurencia</h4>
@@ -243,9 +252,9 @@ Ne pazarold el a pénzedet!
                 </div>
                 <div class="flex items-start gap-4">
                     <div class="flex-shrink-0 bg-brand-orange/10 p-3 rounded-full">
-                        <svg class="h-6 w-6 text-brand-orange" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 1-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 1 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 1 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 1-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" />
-                        </svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-fill h-6 w-6 text-brand-orange" viewBox="0 0 16 16">
+  <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/>
+</svg>
                     </div>
                     <div>
                         <h4 class="font-bold text-gray-800 text-lg">Bizonytalan megtérülés (ROI)</h4>
@@ -269,45 +278,44 @@ Ne pazarold el a pénzedet!
             </div>
 
             <div class="grid lg:grid-cols-2 gap-16 items-center relative z-10">
-                <div class="space-y-6">
+                <div class="space-y-6 text-center md:text-left">
                     <h2 id="weboldal-heading" class="font-condensed text-4xl md:text-5xl font-bold text-brand-blue">
-                        A közösségi média profil nem weboldal.
+                        Miért van szükséged weboldalra? <br><span class="text-brand-orange">És a közösségi média profil nem weboldal!</span>
                     </h2>
                     <p class="text-xl font-medium text-gray-700 leading-relaxed">
-                        Gondolj rá így: a közösségi média a buli, ahol bemutatkozol. A weboldalad az otthonod, ahová hazaviszed az igazán fontos vendégeket.
+                        Gondolj rá így: a közösségi média a buli, ahol bemutatkozol. A weboldalad az otthonod, ahová hazaviszed az igazán fontos vendégeket 😉
                     </p>
                     <p class="text-gray-600">
-                        A közösségi oldalakon csak bérelsz egy apró helyet. Bármikor változhatnak a szabályok, az algoritmusok, vagy akár el is veszítheted a fiókodat. Ezzel szemben a saját weboldalad a te digitális főhadiszállásod: egy olyan stabil, megbízható online tér, amit 100%-ban te irányítasz. Ez az a hely, ahol a márkaépítés, az értékesítés és a bizalomépítés igazán elkezdődik.
-                    </p>
+A social média bizonytalan, bérelt felület, ahol bármikor változhatnak a szabályok. <br>Ezzel szemben <strong>a saját weboldalad a TE stabil, 100%-ban irányítható online központod</strong>, ami a márka- és bizalomépítés, valamint az értékesítés valódi alapja!</p>
                 </div>
 
                 <div class="grid sm:grid-cols-2 gap-8">
                     <div class="bg-light-bg/80 p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg">
                         <p class="font-condensed text-5xl font-bold text-brand-orange">75%</p>
-                        <h4 class="font-bold text-gray-800 mt-2">A hitelességed múlik rajta</h4>
+                        <h4 class="font-bold text-gray-800 mt-2">A hitelességed múlik rajta!</h4>
                         <p class="text-sm text-gray-600 mt-1">
-                            A felhasználók háromnegyede egy cég hitelességét a weboldalának minősége alapján ítéli meg. (Forrás: Forbes)
+                            A felhasználók háromnegyede egy cég hitelességét a weboldalának minősége alapján ítéli meg.
                         </p>
                     </div>
                     <div class="bg-light-bg/80 p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg">
                         <p class="font-condensed text-5xl font-bold text-brand-orange">81%</p>
-                        <h4 class="font-bold text-gray-800 mt-2">Az ügyfeleid itt keresnek</h4>
+                        <h4 class="font-bold text-gray-800 mt-2">Az ügyfeleid itt keresnek!</h4>
                         <p class="text-sm text-gray-600 mt-1">
-                            A vásárlók túlnyomó többsége online kutatást végez, mielőtt terméket vagy szolgáltatást venne. (Forrás: HubSpot)
+                            A vásárlók túlnyomó többsége online kutatást végez, mielőtt terméket vagy szolgáltatást venne.
                         </p>
                     </div>
                     <div class="bg-light-bg/80 p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg">
                         <p class="font-condensed text-5xl font-bold text-brand-orange">93%</p>
-                        <h4 class="font-bold text-gray-800 mt-2">Itt kezdődik a láthatóság</h4>
+                        <h4 class="font-bold text-gray-800 mt-2">Ott kezdődik a láthatóság!</h4>
                         <p class="text-sm text-gray-600 mt-1">
-                            Az online élmények 93%-a egy keresőmotorral (pl. Google) indul, ami a weboldaladat listázza, nem a Facebook posztodat.
+                            Az online élmények 93%-a egy keresőmotorral (pl. Google) indul, ami a weboldalakat listázza előre, nem a Facebook posztokat.
                         </p>
                     </div>
                      <div class="bg-light-bg/80 p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-lg">
                         <p class="font-condensed text-5xl font-bold text-brand-orange">24/7</p>
-                        <h4 class="font-bold text-gray-800 mt-2">A marketinges, aki sosem alszik</h4>
+                        <h4 class="font-bold text-gray-800 mt-2">A marketingesed, aki sosem alszik!</h4>
                         <p class="text-sm text-gray-600 mt-1">
-                            A weboldalad éjjel-nappal tájékoztatja és meggyőzi a látogatókat, akkor is, amikor te épp nem dolgozol.
+                            A weboldalad éjjel-nappal tájékoztatja, irányítja és meggyőzi a látogatókat, akkor is, amikor Te épp nem dolgozol.
                         </p>
                     </div>
                 </div>
@@ -324,10 +332,10 @@ Ne pazarold el a pénzedet!
             És akkor mi a megoldás?
         </h2>
         <p class="text-lg text-gray-200 max-w-2xl mx-auto mb-10">
-            A megoldás egy stratégiailag felépített, profi digitális jelenlét, aminek a középpontjában egy modern és gyors weboldal áll. Egy online otthon, ami éjjel-nappal neked dolgozik.
+            Egy stratégiailag felépített, profi digitális jelenlét, aminek a középpontjában egy modern és gyors weboldal áll. <br><strong>Egy online rendszer, ami éjjel-nappal neked dolgozik!</strong>
         </p>
-        <a href="#szolgaltatasok" class="inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-lg shadow-xl text-lg transform transition-transform duration-300 hover:scale-105 hover:bg-orange-500" aria-label="Tudj meg többet a szolgáltatásokról és nézzük meg, hogyan segítünk a növekedésben">
-            Nézzük meg, hogyan segítünk! <span class="ml-2" aria-hidden="true">&rarr;</span>
+        <a href="#szolgaltatasok" class="inline-block bg-brand-orange text-white font-bold py-2 px-10 rounded-lg shadow-xl text-lg transform transition-transform duration-300 hover:scale-105 hover:bg-orange-500" aria-label="Tudj meg többet a szolgáltatásokról és nézzük meg, hogyan segítünk a növekedésben">
+            Egyeztessünk róla!
         </a>
     </div>
 
@@ -341,79 +349,79 @@ Ne pazarold el a pénzedet!
 <!--SZOLGÁLTATÁSOK-->
 <section id="szolgaltatasok" class="py-20 bg-light-bg" aria-labelledby="szolgaltatasok-heading">
     <div class="container mx-auto px-6 text-center">
-        <h2 id="szolgaltatasok-heading" class="font-condensed text-4xl font-bold text-brand-blue mb-4">
-            Együtt Felépítjük A Digitális Sikered
+        <h2 id="szolgaltatasok-heading" class="font-condensed text-4xl font-bold text-brand-blue mb-4 uppercase">
+            Együtt Felépítjük A Digitális Sikeredet!
         </h2>
         <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-16">
-            A stratégiától a megvalósításig – minden egy helyen, amire a márkádnak online szüksége van a növekedéshez.
+            <strong>Szolgáltatások a tervezéstől a megvalósításig.</strong> <br> Minden egy helyen, egy kézben, hogy Te maximálisan csak a vállalkozásra koncentrálhass!
         </p>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-md mx-auto md:max-w-full">
 
-            <div class="flip-card">
+            <div class="flip-card aspect-square md:h-82">
                 <div class="flip-card-inner rounded-lg shadow-lg">
                     <div class="flip-card-front">
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2670&auto=format&fit=crop" alt="Digitális marketing stratégia kidolgozása megbeszélésen" class="absolute w-full h-full object-cover">
+                        <img src="/assets/images/seoestartalom.webp" alt="Digitális marketing stratégia kidolgozása megbeszélésen" class="absolute w-full h-full object-cover">
                         <div class="absolute inset-0 bg-black/50 flex items-end p-6">
-                            <h3 class="font-condensed text-2xl font-bold text-white">Digitális Stratégia</h3>
+                            <h3 class="font-condensed text-2xl font-bold text-white mb-4">Digitális Stratégia</h3>
                         </div>
                     </div>
-                    <div class="flip-card-back bg-brand-blue text-white flex flex-col justify-center p-6">
-                        <h3 class="font-condensed text-2xl font-bold mb-2">Digitális Stratégia</h3>
-                        <p class="text-gray-200">Mielőtt egyetlen forintot is költenél, közösen felépítünk egy kikezdhetetlen tervet. Piac- és konkurenciaelemzés, célok meghatározása, és egy pontos útiterv a sikerhez.</p>
+                    <div class="flip-card-back text-white flex flex-col justify-center p-6" style="background: linear-gradient(to bottom right, #2563eb, #1E3A8A);">
+                        <h3 class="font-condensed text-2xl font-bold mb-4">Digitális Stratégia</h3>
+                        <p class="text-gray-200 text-lg md:text-base">Mielőtt egyetlen forintot is költenél, közösen felépítünk egy kikezdhetetlen tervet. Piac- és konkurenciaelemzés, célok meghatározása, és egy pontos útiterv a sikerhez.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="flip-card">
+            <div class="flip-card aspect-square md:h-82">
                 <div class="flip-card-inner rounded-lg shadow-lg">
                     <div class="flip-card-front">
-                        <img src="https://images.unsplash.com/photo-1572044162444-24c95621ec3b?q=80&w=2574&auto=format&fit=crop" alt="Arculattervezés és branding folyamata színekkel és vázlatokkal" class="absolute w-full h-full object-cover">
+                        <img src="/assets/images/technikaitanacsadas.webp" alt="Arculattervezés és branding folyamata színekkel és vázlatokkal" class="absolute w-full h-full object-cover">
                          <div class="absolute inset-0 bg-black/50 flex items-end p-6">
-                            <h3 class="font-condensed text-2xl font-bold text-white">Arculattervezés & Branding</h3>
-                        </div>
+                             <h3 class="font-condensed text-2xl font-bold text-white">Arculattervezés & Branding</h3>
+                         </div>
                     </div>
-                    <div class="flip-card-back bg-brand-blue text-white flex flex-col justify-center p-6">
+                    <div class="flip-card-back text-white flex flex-col justify-center p-6" style="background: linear-gradient(to bottom right, #2563eb, #1E3A8A);">
                         <h3 class="font-condensed text-2xl font-bold mb-2">Arculattervezés & Branding</h3>
-                        <p class="text-gray-200">Az első benyomás megismételhetetlen. Egyedi logót, színeket és vizuális elemeket tervezünk, amik bizalmat ébresztenek és kiemelnek a tömegből.</p>
+                        <p class="text-gray-200 text-lg md:text-base">Az első benyomás megismételhetetlen. Egyedi logót, színeket és vizuális elemeket tervezünk, amik bizalmat ébresztenek és kiemelnek a tömegből.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="flip-card">
+            <div class="flip-card aspect-square md:h-82">
                 <div class="flip-card-inner rounded-lg shadow-lg">
                     <div class="flip-card-front">
-                        <img src="https://images.unsplash.com/photo-1555774698-0b77e0ab232F?q=80&w=2670&auto=format&fit=crop" alt="Modern weboldal dizájn laptopon és mobilon" class="absolute w-full h-full object-cover">
+                        <img src="/assets/images/weboldalkeszites.webp" alt="Modern weboldal dizájn laptopon és mobilon" class="absolute w-full h-full object-cover">
                          <div class="absolute inset-0 bg-black/50 flex items-end p-6">
-                            <h3 class="font-condensed text-2xl font-bold text-white">Weboldal & Webshop Készítés</h3>
-                        </div>
+                             <h3 class="font-condensed text-2xl font-bold text-white">Weboldal & Webshop Készítés</h3>
+                         </div>
                     </div>
-                    <div class="flip-card-back bg-brand-blue text-white flex flex-col justify-center p-6">
+                    <div class="flip-card-back text-white flex flex-col justify-center p-6" style="background: linear-gradient(to bottom right, #2563eb, #1E3A8A);">
                          <h3 class="font-condensed text-2xl font-bold mb-2">Weboldal & Webshop Készítés</h3>
-                        <p class="text-gray-200">Gyors, mobilbarát és felhasználóközpontú weboldalt készítünk, ami nemcsak szép, hanem hatékonyan alakítja a látogatókat fizető ügyfelekké.</p>
+                        <p class="text-gray-200 text-lg md:text-base">Gyors, mobilbarát és felhasználóközpontú weboldalt készítünk, ami nemcsak jelen van, hanem hatékonyan alakítja a látogatókat fizető ügyfelekké.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="flip-card">
+            <div class="flip-card aspect-square md:h-82">
                 <div class="flip-card-inner rounded-lg shadow-lg">
                     <div class="flip-card-front">
-                        <img src="https://images.unsplash.com/photo-1554224155-8d044b403259?q=80&w=2670&auto=format&fit=crop" alt="Online marketing kampány eredményeinek elemzése grafikonokon" class="absolute w-full h-full object-cover">
+                        <img src="/assets/images/hirdeteskezeles.webp" alt="Online marketing kampány eredményeinek elemzése grafikonokon" class="absolute w-full h-full object-cover">
                          <div class="absolute inset-0 bg-black/50 flex items-end p-6">
-                            <h3 class="font-condensed text-2xl font-bold text-white">Online Marketing & Hirdetéskezelés</h3>
-                        </div>
+                             <h3 class="font-condensed text-2xl font-bold text-white">Online Marketing & Hirdetéskezelés</h3>
+                         </div>
                     </div>
-                    <div class="flip-card-back bg-brand-blue text-white flex flex-col justify-center p-6">
+                    <div class="flip-card-back text-white flex flex-col justify-center p-6" style="background: linear-gradient(to bottom right, #2563eb, #1E3A8A);">
                         <h3 class="font-condensed text-2xl font-bold mb-2">Online Marketing & Hirdetéskezelés</h3>
-                        <p class="text-gray-200">A megfelelő emberekhez juttatjuk el az üzeneted. SEO, Google Ads és közösségi média hirdetések, amik valódi, mérhető eredményeket hoznak.</p>
+                        <p class="text-gray-200 text-lg md:text-base">A megfelelő emberekhez juttatjuk el az üzeneted. SEO, Google Ads és közösségi média hirdetések, amik valódi, mérhető eredményeket hoznak.</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="mt-16">
-            <a href="#kapcsolat" class="inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-lg shadow-xl text-lg transform transition-transform duration-300 hover:scale-105 hover:bg-orange-500">
-                Melyik megoldás illik hozzád? Beszéljünk róla!
+            <a href="#kapcsolat" class="inline-block bg-brand-orange text-white font-bold py-2 px-10 rounded-lg shadow-xl text-lg transform transition-transform duration-300 hover:scale-105 hover:bg-orange-500">
+                Beszéljük meg, mire van szükséged!
             </a>
         </div>
     </div>
@@ -423,11 +431,11 @@ Ne pazarold el a pénzedet!
 <section id="miert-en" class="bg-light-bg py-20" aria-labelledby="miert-minket-heading">
     <div class="container mx-auto px-6">
         <div class="text-center max-w-3xl mx-auto mb-16">
-            <h2 id="miert-minket-heading" class="font-condensed text-4xl font-bold text-brand-blue mb-4">
-                Több Mint Egy Ügynökség. A Te Digitális Partnered.
+            <h2 id="miert-minket-heading" class="font-condensed text-4xl font-bold text-brand-blue mb-4 uppercase">
+                Több Mint Egy Ügynökség. <br>A Te Digitális Partnered!
             </h2>
             <p class="text-lg text-gray-600">
-                Nem hiszünk a sablonmegoldásokban és a futószalagon gyártott projektekben. Mi a te csapatod kiterjesztéseként dolgozunk, ahol a közös cél a te vállalkozásod mérhető növekedése.
+                Nem hiszek a sablonmegoldásokban és a futószalagon gyártott projektekben. Én a csapatod kiterjesztéseként dolgozok, ahol <strong>a közös cél a Te vállalkozásod mérhető növekedése!</strong>
             </p>
         </div>
 
@@ -435,24 +443,23 @@ Ne pazarold el a pénzedet!
             
             <div class="text-center">
                 <div class="flex justify-center items-center mx-auto bg-brand-orange/10 rounded-full h-16 w-16 mb-4">
-                     <svg class="h-8 w-8 text-brand-orange" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 11.667 0l3.181-3.183m-4.991-2.691v4.992h4.992" />
-                    </svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up h-8 w-8 text-brand-orange" viewBox="0 0 16 16">
+  <path d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2 2 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a10 10 0 0 0-.443.05 9.4 9.4 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a9 9 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.2 2.2 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.9.9 0 0 1-.121.416c-.165.288-.503.56-1.066.56z"/>
+</svg>
                 </div>
                 <h3 class="font-condensed text-xl font-bold text-brand-orange mb-2">
                     Valódi Partnerség
                 </h3>
                 <p class="text-gray-600">
-                    Nem csak egy külsős cég vagyunk a sok közül. Beleássuk magunkat a céged működésébe, megértjük a céljaidat, és veled együtt dolgozunk a közös sikerekért.
+                    Nem csak egy külsős szolgáltató vagyunk a sok közül. Beleássuk magunkat a céged működésébe, megértjük a céljaidat, és veled együtt dolgozunk a közös sikerekért.
                 </p>
             </div>
 
             <div class="text-center">
                 <div class="flex justify-center items-center mx-auto bg-brand-orange/10 rounded-full h-16 w-16 mb-4">
-                   <svg class="h-8 w-8 text-brand-orange" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" />
-                    </svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-graph-up-arrow h-8 w-8 text-brand-orange" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M0 0h1v15h15v1H0zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5"/>
+</svg>
                 </div>
                 <h3 class="font-condensed text-xl font-bold text-brand-orange mb-2">
                     Adatvezérelt Hozzáállás
@@ -464,10 +471,10 @@ Ne pazarold el a pénzedet!
 
             <div class="text-center">
                 <div class="flex justify-center items-center mx-auto bg-brand-orange/10 rounded-full h-16 w-16 mb-4">
-                    <svg class="h-8 w-8 text-brand-orange" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639l4.43-7.598A4.5 4.5 0 0 1 10.5 2.25h3a4.5 4.5 0 0 1 4.034 3.82l4.43 7.598a1.012 1.012 0 0 1 0 .639l-4.43 7.598A4.5 4.5 0 0 1 13.5 21.75h-3a4.5 4.5 0 0 1-4.034-3.82l-4.43-7.598Z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                    </svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye h-8 w-8 text-brand-orange" viewBox="0 0 16 16">
+  <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"/>
+  <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
+</svg>
                 </div>
                 <h3 class="font-condensed text-xl font-bold text-brand-orange mb-2">
                     Teljes Átláthatóság
@@ -486,8 +493,8 @@ Ne pazarold el a pénzedet!
         <div class="grid lg:grid-cols-2 gap-16 items-center">
 
             <div class="wow slideInLeft">
-                <img src="https://assets-global.website-files.com/657512a8497676646738b813/65790445a6c3f68ddf98b679_kep.webp" 
-                     alt="Balogh Gábor - a Studio BGK alapítója, digitális stratégiai tanácsadó" 
+                <img src="/assets/images/about-pic.jpeg" 
+                     alt="B. Gergely Kristóf - a Studio BGK alapítója, digitális stratégiai tanácsadó" 
                      loading="lazy"
                      width="800"
                      height="1000"
@@ -495,11 +502,11 @@ Ne pazarold el a pénzedet!
             </div>
 
             <div class="wow slideInRight">
-                <h2 id="egyuttmukodes-heading" class="font-condensed text-4xl font-bold text-brand-blue mb-4">
-                    Együttműködés, Lépésről Lépésre
+                <h2 id="egyuttmukodes-heading" class="font-condensed text-4xl font-bold text-brand-blue mb-4 uppercase text-center md:text-left">
+                    Engedd meg, hogy bemutatkozzak!
                 </h2>
-                <p class="text-gray-600 mb-8 text-lg">
-                    Hiszek a tiszta kommunikációban és a strukturált folyamatokban, ahol te mindig pontosan tudod, mi és miért történik. Nincsenek meglepetések, csak közös munka a közös célért. A folyamatunk egyszerű és átlátható:
+                <p class="text-gray-600 mb-8 text-lg text-center md:text-left">
+                    <strong>B. Gergely Kristóf vagyok, a Studio BGK alapítója.</strong> <br>Hiszek a tiszta kommunikációban és a strukturált folyamatokban, ahol Te mindig pontosan tudod, mi és miért történik. Nincsenek meglepetések, csak közös munka a közös célért. <br><strong>A folyamatunk egyszerű és átlátható:</strong>
                 </p>
 
                 <div class="space-y-8">
@@ -507,7 +514,7 @@ Ne pazarold el a pénzedet!
                         <div class="font-condensed text-4xl font-bold text-brand-orange flex-shrink-0 mt-1" aria-hidden="true">01.</div>
                         <div>
                             <h3 class="font-condensed text-xl font-bold text-gray-800">Megismerkedés & Célok Meghatározása</h3>
-                            <p class="text-gray-600">Minden egy beszélgetéssel kezdődik, ahol én hallgatlak téged. Megismerem a céged, a kihívásaid és a céljaid, hogy a megoldás valóban rád legyen szabva.</p>
+                            <p class="text-gray-600">Minden egy beszélgetéssel kezdődik, ahol Én hallgatlak téged. Megismerem a céged, a kihívásaid és a céljaid, hogy a megoldás valóban rád legyen szabva.</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-4">
@@ -528,7 +535,7 @@ Ne pazarold el a pénzedet!
                         <div class="font-condensed text-4xl font-bold text-brand-orange flex-shrink-0 mt-1" aria-hidden="true">04.</div>
                         <div>
                             <h3 class="font-condensed text-xl font-bold text-gray-800">Eredmények Mérése & Optimalizáció</h3>
-                            <p class="text-gray-600">A közös munka nem ér véget az indulással. Folyamatosan mérjük az eredményeket, és finomhangoljuk a stratégiát, hogy a befektetésed a lehető legmagasabb megtérülést hozza.</p>
+                            <p class="text-gray-600">A közös munka nem ér itt véget. Folyamatosan mérjük az eredményeket és finomhangoljuk a stratégiát, hogy a befektetésed a lehető legmagasabb megtérülést hozza!</p>
                         </div>
                     </div>
                 </div>
@@ -536,7 +543,7 @@ Ne pazarold el a pénzedet!
         </div>
         
         <div class="mt-16 text-center">
-            <a href="#kapcsolat" class="inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-lg shadow-xl text-lg transform transition-transform duration-300 hover:scale-105 hover:bg-orange-500" aria-label="Kezdjük el a közös munkát! Keress minket!">
+            <a href="#kapcsolat" class="inline-block bg-brand-orange text-white font-bold py-2 px-10 rounded-lg shadow-xl text-lg transform transition-transform duration-300 hover:scale-105 hover:bg-orange-500" aria-label="Kezdjük el a közös munkát! Keress minket!">
                 Kezdjük el a közös munkát!
             </a>
         </div>
@@ -548,20 +555,21 @@ Ne pazarold el a pénzedet!
     <div class="container mx-auto px-6">
         <div class="text-center max-w-3xl mx-auto mb-16">
             <h2 id="eredmenyek-heading" class="font-condensed text-4xl font-bold text-white mb-4">
-                Eredmények, Amik Magukért Beszélnek
+                Eredmények, Amik Magukért Beszélnek!
             </h2>
             <p class="text-lg text-gray-200">
-                Nem csak projekteket zárunk, hanem sikertörténeteket írunk. Közösen. Nézd meg, mit értek el azok, akik már minket választottak.
+                Sikertörténeteket írunk! <br>Közösen.
             </p>
         </div>
 
         <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
 
             <div class="bg-white rounded-lg shadow-xl p-8 flex flex-col relative overflow-hidden transform transition-transform duration-300 hover:scale-[1.02] hover:shadow-2xl">
-                <svg class="absolute top-0 right-0 h-32 w-32 text-brand-blue/5 -mr-4 -mt-4 transform rotate-12" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 14a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path></svg>
-                
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stars absolute top-0 right-0 h-32 w-32 text-brand-blue/5 -mr-4 -mt-4 transform rotate-12" viewBox="0 0 16 16">
+  <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.73 1.73 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.73 1.73 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.73 1.73 0 0 0 3.407 2.31zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/>
+</svg>                
                 <div class="relative z-10">
-                    <img class="h-10 w-auto" src="https://tailwindui.com/img/logos/reform-logo-gray-900.svg" alt="Perfect Szerviz logó" loading="lazy">
+                    <img class="h-10 w-auto" src="/assets/images/logo.webp" alt="Perfect Szerviz logó" loading="lazy">
                 </div>
                 
                 <div class="my-6 relative z-10">
@@ -574,16 +582,18 @@ Ne pazarold el a pénzedet!
                 </blockquote>
                 
                 <footer class="mt-6 pt-6 border-t border-gray-300 relative z-10">
-                    <p class="font-bold text-gray-800">Nagy Károly</p>
+                    <p class="font-bold text-gray-800">N. Károly</p>
                     <p class="text-sm text-gray-500">Cégtulajdonos, Perfect Szerviz</p>
                 </footer>
             </div>
 
             <div class="bg-white rounded-lg shadow-xl p-8 flex flex-col relative overflow-hidden transform transition-transform duration-300 hover:scale-[1.02] hover:shadow-2xl">
-                <svg class="absolute top-0 right-0 h-32 w-32 text-brand-blue/5 -mr-4 -mt-4 transform rotate-12" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 14a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stars absolute top-0 right-0 h-32 w-32 text-brand-blue/5 -mr-4 -mt-4 transform rotate-12" viewBox="0 0 16 16">
+  <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.73 1.73 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.73 1.73 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.73 1.73 0 0 0 3.407 2.31zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"/>
+</svg>                
                 
                 <div class="relative z-10">
-                    <img class="h-10 w-auto" src="https://tailwindui.com/img/logos/savvycal-logo-gray-900.svg" alt="Kreatív Otthon Webshop logó" loading="lazy">
+                    <img class="h-10 w-auto" src="/assets/images/logo.webp" alt="Kreatív Otthon Webshop logó" loading="lazy">
                 </div>
                 
                 <div class="my-6 relative z-10">
@@ -592,11 +602,11 @@ Ne pazarold el a pénzedet!
                 </div>
                 
                 <blockquote class="text-gray-600 italic relative z-10">
-                    “Féltünk a marketingesektől, akik csak a pénzünket akarták. A Studio BGK volt az első, aki valóban megértette a termékünket, és olyan stratégiát épített, ami nemcsak látogatókat, hanem valódi, visszatérő vásárlókat hozott.”
+                    “Úgy gondoltuk, hogy nincs szükség marketingesre, mi is meg tudjuk csinálni. Sok pénzt kidobtunk rá, mire megértettük, hogy nem tudunk mi mindent. Gergely azonnal megértette a céljainkat és olyan stratégiát épített, ami nemcsak látogatókat, hanem valódi, visszatérő vásárlókat hozott.”
                 </blockquote>
                 
                 <footer class="mt-6 pt-6 border-t border-gray-300 relative z-10">
-                    <p class="font-bold text-gray-800">Horváth Éva</p>
+                    <p class="font-bold text-gray-800">H. Éva</p>
                     <p class="text-sm text-gray-500">Alapító, Kreatív Otthon Webshop</p>
                 </footer>
             </div>
@@ -609,66 +619,62 @@ Ne pazarold el a pénzedet!
 <section id="referenciak" class="py-20" style="background: linear-gradient(to bottom, #F3F4F6, #FFFFFF);" aria-labelledby="referenciak-heading">
     <div class="container mx-auto px-6">
         <div class="text-center max-w-3xl mx-auto mb-16">
-            <h2 id="referenciak-heading" class="font-condensed text-4xl font-bold text-brand-blue mb-4">
-                Munkák, Amikre Büszkék Vagyunk
+            <h2 id="referenciak-heading" class="font-condensed text-4xl font-bold text-brand-blue mb-4 uppercase">
+                Legújabb átadásra került weboldalaink
             </h2>
             <p class="text-lg text-gray-600">
-                Minden projekt egy új kihívás és egy új lehetőség, hogy valami maradandót alkossunk. Íme néhány példa a közös sikereinkből.
+                Minden projekt egy új kihívás és egy új lehetőség, hogy valami maradandót alkossunk!
             </p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-12">
 
             <div class="bg-white rounded-lg shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-                <a href="https://perfectszerviz.hu" target="_blank" rel="noopener noreferrer" aria-label="Nézd meg a Perfect Szerviz weboldalát élőben!">
-                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                    <img src="/assets/images/logo.webp" 
                          alt="Perfect Szerviz weboldal bemutatója laptopon" 
                          loading="lazy"
                          width="1200"
                          height="800"
                          class="w-full h-auto object-cover">
-                </a>
                 <div class="p-8">
                     <div class="mb-4">
-                        <span class="inline-block bg-brand-orange/10 text-brand-orange text-xs font-semibold mr-2 px-2.5 py-1 rounded-full">Webdesign</span>
+                        <span class="inline-block bg-brand-orange/10 text-brand-orange text-xs font-semibold mr-2 px-2.5 py-1 rounded-full">Webfejlesztés</span>
                         <span class="inline-block bg-brand-orange/10 text-brand-orange text-xs font-semibold mr-2 px-2.5 py-1 rounded-full">Helyi SEO</span>
-                        <span class="inline-block bg-brand-orange/10 text-brand-orange text-xs font-semibold px-2.5 py-1 rounded-full">Konverzió Optimalizálás</span>
+                        <span class="inline-block bg-brand-orange/10 text-brand-orange text-xs font-semibold px-2.5 py-1 rounded-full">Arculattervezés</span>
                     </div>
                     <h3 class="font-condensed text-2xl font-bold text-brand-blue mb-2">
-                        Perfect Szerviz - Új Generációs Ügyfélszerzés
+                        TD Tattoo & Art
                     </h3>
                     <p class="text-gray-600 mb-6">
-                        Az elavult, mobilra nem optimalizált weboldal helyett egy modern, gyors és konverziófókuszú digitális névjegyet hoztunk létre, ami folyamatosan szállítja az új árajánlatkéréseket.
+                        Egy gyors, információ központú weboldal elkészítése volt a cél, hogy a potenciális ügyfelek azonnal, pár gombnyomással mindent megtudjanak, ami a foglaláshoz vezetheti őket. A logókészítés és arculattervezés is ránk volt bízva.
                     </p>
-                    <a href="https://perfectszerviz.hu" target="_blank" rel="noopener noreferrer" class="inline-block bg-brand-orange text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-orange-500 transition-all duration-300 transform hover:scale-105" aria-label="Perfect Szerviz weboldal megtekintése">
-                        Megnézem élőben &rarr;
+                    <a href="https://tdtattooart.hu" target="_blank" rel="noopener noreferrer" class="inline-block text-brand-blue transition-all duration-300 transform hover:scale-105" aria-label="Perfect Szerviz weboldal megtekintése">
+                        Weboldal megtekintése
                     </a>
                 </div>
             </div>
 
             <div class="bg-white rounded-lg shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-                <a href="https://kreativotthon.hu" target="_blank" rel="noopener noreferrer" aria-label="Nézd meg a Kreatív Otthon Webshop weboldalát élőben!">
-                    <img src="https://images.unsplash.com/photo-1600880292210-85938c02a245?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                    <img src="/assets/images/logo.webp" 
                          alt="Kreatív Otthon Webshop termékoldala laptopon és mobiltelefonon" 
                          loading="lazy"
                          width="1200"
                          height="800"
                          class="w-full h-auto object-cover">
-                </a>
                 <div class="p-8">
                     <div class="mb-4">
-                        <span class="inline-block bg-brand-orange/10 text-brand-orange text-xs font-semibold mr-2 px-2.5 py-1 rounded-full">Webshop Fejlesztés</span>
-                        <span class="inline-block bg-brand-orange/10 text-brand-orange text-xs font-semibold mr-2 px-2.5 py-1 rounded-full">E-kereskedelem</span>
-                        <span class="inline-block bg-brand-orange/10 text-brand-orange text-xs font-semibold px-2.5 py-1 rounded-full">UX/UI Design</span>
+                        <span class="inline-block bg-brand-orange/10 text-brand-orange text-xs font-semibold mr-2 px-2.5 py-1 rounded-full">Online stratégia</span>
+                        <span class="inline-block bg-brand-orange/10 text-brand-orange text-xs font-semibold mr-2 px-2.5 py-1 rounded-full">Piackutatás</span>
+                        <span class="inline-block bg-brand-orange/10 text-brand-orange text-xs font-semibold px-2.5 py-1 rounded-full">Webfejlesztés</span>
                     </div>
                     <h3 class="font-condensed text-2xl font-bold text-brand-blue mb-2">
                         Kreatív Otthon - Vásárlói Élmény a Középpontban
                     </h3>
                     <p class="text-gray-600 mb-6">
-                        Egy teljesen egyedi webshopot építettünk, ami nemcsak a termékeket mutatja be gyönyörűen, de a vásárlási folyamatot is élménnyé teszi, jelentősen csökkentve a kosárelhagyást.
+                        Teljesen egyedi, egy oldalas bemutatkozó honlap készült, ami mialatt végigkíséri a látogatót, ellátja minden információval a gyors és hatásos együttműködés megalapozásához. Maximális versenytárs elemzés, a piac megismerése és a teljes szövegírás is a feladatunk volt.  
                     </p>
-                    <a href="https://kreativotthon.hu" target="_blank" rel="noopener noreferrer" class="inline-block bg-brand-orange text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-orange-500 transition-all duration-300 transform hover:scale-105" aria-label="Kreatív Otthon Webshop megtekintése">
-                        Megnézem élőben &rarr;
+                    <a href="https://merohelyem.hu" target="_blank" rel="noopener noreferrer" class="inline-block text-brand-blue transition-all duration-300 transform hover:scale-105" aria-label="Kreatív Otthon Webshop megtekintése">
+                        Weboldal megtekintése
                     </a>
                 </div>
             </div>
@@ -678,8 +684,8 @@ Ne pazarold el a pénzedet!
     </div>
 </section>
 
-<!--SABLONOK-->
-<section id="weboldal-sablonok" class="bg-white py-20" aria-labelledby="weboldal-sablonok-heading">
+<!--SABLONOK NOT IN USE-->
+<!-- <section id="weboldal-sablonok" class="bg-white py-20" aria-labelledby="weboldal-sablonok-heading">
     <div class="container mx-auto px-6">
         <div class="text-center max-w-3xl mx-auto mb-16">
             <h2 id="weboldal-sablonok-heading" class="font-condensed text-4xl font-bold text-brand-blue mb-4">
@@ -706,10 +712,10 @@ Ne pazarold el a pénzedet!
                     <p class="text-sm text-gray-500 mb-4">Ideális választás **tanácsadóknak, irodáknak, szabadúszóknak és szakértőknek**, akik modern online jelenlétet szeretnének.</p>
                     <p class="font-condensed text-4xl font-bold text-gray-800 mb-6">Fix Ár: 180.000 Ft</p>
                     <div class="mt-auto flex flex-col sm:flex-row gap-2">
-                        <a href="/sablonok/modern-szolgaltato-demo" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-white border-2 border-brand-blue text-brand-blue font-bold py-3 px-4 rounded-lg hover:bg-brand-blue hover:text-white transition-colors duration-300" aria-label="Élő Demo megtekintése: A Modern Szolgáltató">
+                        <a href="/sablonok/modern-szolgaltato-demo" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-white border-2 border-brand-blue text-brand-blue font-bold py-2 px-4 rounded-lg hover:bg-brand-blue hover:text-white transition-colors duration-300" aria-label="Élő Demo megtekintése: A Modern Szolgáltató">
                             Élő Demo
                         </a>
-                        <a href="#kapcsolat?sablon=modern-szolgaltato" class="w-full text-center bg-brand-orange text-white font-bold py-3 px-4 rounded-lg hover:bg-orange-500 transition-colors duration-300" aria-label="Ezt a sablont választom: A Modern Szolgáltató">
+                        <a href="#kapcsolat?sablon=modern-szolgaltato" class="w-full text-center bg-brand-orange text-white font-bold py-2 px-4 rounded-lg hover:bg-orange-500 transition-colors duration-300" aria-label="Ezt a sablont választom: A Modern Szolgáltató">
                             Ezt választom
                         </a>
                     </div>
@@ -733,7 +739,7 @@ Ne pazarold el a pénzedet!
                         <a href="/sablonok/vizualis-portfolio-demo" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-white border-2 border-brand-blue text-brand-blue font-bold py-3 px-4 rounded-lg hover:bg-brand-blue hover:text-white transition-colors duration-300" aria-label="Élő Demo megtekintése: A Vizuális Portfólió">
                             Élő Demo
                         </a>
-                        <a href="#kapcsolat?sablon=vizualis-portfolio" class="w-full text-center bg-brand-orange text-white font-bold py-3 px-4 rounded-lg hover:bg-orange-500 transition-colors duration-300" aria-label="Ezt a sablont választom: A Vizuális Portfólió">
+                        <a href="#kapcsolat?sablon=vizualis-portfolio" class="w-full text-center bg-brand-orange text-white font-bold py-2 px-4 rounded-lg hover:bg-orange-500 transition-colors duration-300" aria-label="Ezt a sablont választom: A Vizuális Portfólió">
                             Ezt választom
                         </a>
                     </div>
@@ -754,10 +760,10 @@ Ne pazarold el a pénzedet!
                     <p class="text-sm text-gray-500 mb-4">Tökéletes megoldás **éttermeknek, üzleteknek, fodrászatoknak és minden helyi szolgáltatónak**.</p>
                     <p class="font-condensed text-4xl font-bold text-gray-800 mb-6">Fix Ár: 180.000 Ft</p>
                     <div class="mt-auto flex flex-col sm:flex-row gap-2">
-                        <a href="/sablonok/helyi-kisvallalkozas-demo" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-white border-2 border-brand-blue text-brand-blue font-bold py-3 px-4 rounded-lg hover:bg-brand-blue hover:text-white transition-colors duration-300" aria-label="Élő Demo megtekintése: A Helyi Kisvállalkozás">
+                        <a href="/sablonok/helyi-kisvallalkozas-demo" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-white border-2 border-brand-blue text-brand-blue font-bold py-2 px-4 rounded-lg hover:bg-brand-blue hover:text-white transition-colors duration-300" aria-label="Élő Demo megtekintése: A Helyi Kisvállalkozás">
                             Élő Demo
                         </a>
-                        <a href="#kapcsolat?sablon=helyi-kisvallalkozas" class="w-full text-center bg-brand-orange text-white font-bold py-3 px-4 rounded-lg hover:bg-orange-500 transition-colors duration-300" aria-label="Ezt a sablont választom: A Helyi Kisvállalkozás">
+                        <a href="#kapcsolat?sablon=helyi-kisvallalkozas" class="w-full text-center bg-brand-orange text-white font-bold py-2 px-4 rounded-lg hover:bg-orange-500 transition-colors duration-300" aria-label="Ezt a sablont választom: A Helyi Kisvállalkozás">
                             Ezt választom
                         </a>
                     </div>
@@ -767,7 +773,7 @@ Ne pazarold el a pénzedet!
         </div>
 
     </div>
-</section>
+</section> -->
 
 <!--CTA-->
 <section id="egyedi-cta" class="relative text-white" style="background: linear-gradient(to bottom right, #2563eb, #1E3A8A);" aria-labelledby="egyedi-cta-heading">
@@ -776,11 +782,8 @@ Ne pazarold el a pénzedet!
         <h2 id="egyedi-cta-heading" class="font-condensed text-4xl md:text-5xl font-bold mb-4">
             Valami teljesen egyedire vágysz?
         </h2>
-        <p class="text-lg text-gray-200 max-w-2xl mx-auto mb-10">
-            A sablonok remek kiindulópontot jelentenek, de a legjobb ötletek néha egyedi megvalósítást igényelnek. Ha a te fejedben is speciális funkció vagy egy komplexebb projekt képe rajzolódik ki, ne habozz!
-        </p>
-        <a href="#kapcsolat" class="inline-block bg-brand-orange text-white font-bold py-4 px-10 rounded-lg shadow-xl text-lg transform transition-transform duration-300 hover:scale-105 hover:bg-orange-500" aria-label="Beszéljünk egyedi ötleteidről és kérj személyre szabott árajánlatot">
-            Beszéljünk az ötleteidről! <span class="ml-2" aria-hidden="true">&rarr;</span>
+        <a href="#kapcsolat" class="inline-block bg-brand-orange text-white font-bold py-2 px-10 rounded-lg shadow-xl text-lg transform transition-transform duration-300 hover:scale-105 hover:bg-orange-500" aria-label="Beszéljünk egyedi ötleteidről és kérj személyre szabott árajánlatot">
+            Beszéljünk az ötleteidről!
         </a>
     </div>
 
@@ -792,10 +795,19 @@ Ne pazarold el a pénzedet!
 </section>
 
 <!--FAQ-->
-<section id="gyik" style="background: linear-gradient(to bottom, #F3F4F6, #FFFFFF);" class="py-20" aria-labelledby="gyik-heading">
-    <div class="container mx-auto px-6">
+<section id="gyik" style="background: linear-gradient(to bottom, #F3F4F6, #FFFFFF);" class="py-20 relative overflow-hidden" aria-labelledby="gyik-heading">
+    <div aria-hidden="true" class="absolute inset-0 z-0">
+        <span class="absolute top-[5%] left-[10%] text-8xl text-gray-200/80 font-bold transform -rotate-12 select-none">?</span>
+        <span class="absolute top-[15%] right-[15%] text-6xl text-gray-200/80 font-bold transform rotate-6 select-none">?</span>
+        <span class="absolute top-[50%] left-[20%] text-9xl text-gray-200/80 font-bold transform rotate-12 select-none">?</span>
+        <span class="absolute top-[70%] right-[10%] text-7xl text-gray-200/80 font-bold transform -rotate-6 select-none">?</span>
+        <span class="absolute top-[90%] left-[40%] text-5xl text-gray-200/80 font-bold transform rotate-3 select-none">?</span>
+        <span class="absolute top-[40%] right-[45%] text-4xl text-gray-200/80 font-bold transform rotate-12 select-none">?</span>
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10">
         <div class="text-center max-w-3xl mx-auto mb-12">
-            <h2 id="gyik-heading" class="font-condensed text-4xl font-bold text-brand-blue mb-4">
+            <h2 id="gyik-heading" class="font-condensed text-4xl font-bold text-brand-blue mb-4 uppercase">
                 Gyakran Ismételt Kérdések
             </h2>
             <p class="text-lg text-gray-600">
@@ -803,11 +815,11 @@ Ne pazarold el a pénzedet!
             </p>
         </div>
 
-        <div class="max-w-3xl mx-auto" id="faq-accordion" role="list"> 
-            <div class="border-b border-gray-200 py-4" role="listitem"> 
-                <h3 class="font-condensed text-xl font-bold text-black mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-1" id="faq-question-1">
+        <div class="max-w-3xl mx-auto" id="faq-accordion" role="list">
+            <div class="border-b border-gray-200 py-4" role="listitem">
+                <h3 class="font-condensed text-xl font-bold text-grey-900 mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-1" id="faq-question-1">
                         Mennyi idő alatt készül el egy weboldal?
-                        <svg class="faq-icon h-6 w-6 text-black flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
+                        <svg class="faq-icon h-6 w-6 text-grey-900 flex-shrink-0 transition-transform duration-300" xmlns="http://www.w.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                         </svg>
                     </button>
@@ -820,9 +832,9 @@ Ne pazarold el a pénzedet!
             </div>
 
             <div class="border-b border-gray-200 py-4" role="listitem">
-                <h3 class="font-condensed text-xl font-bold text-black mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-2" id="faq-question-2">
+                <h3 class="font-condensed text-xl font-bold text-grey-900 mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-2" id="faq-question-2">
                         Mennyibe kerül egy egyedi weboldal?
-                        <svg class="faq-icon h-6 w-6 text-black flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
+                        <svg class="faq-icon h-6 w-6 text-grey-900 flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                         </svg>
                     </button>
@@ -835,9 +847,9 @@ Ne pazarold el a pénzedet!
             </div>
             
             <div class="border-b border-gray-200 py-4" role="listitem">
-                <h3 class="font-condensed text-xl font-bold text-black mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-3" id="faq-question-3">
+                <h3 class="font-condensed text-xl font-bold text-grey-900 mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-3" id="faq-question-3">
                         Mi történik a weboldal indulása után?
-                        <svg class="faq-icon h-6 w-6 text-black flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
+                        <svg class="faq-icon h-6 w-6 text-grey-900 flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                         </svg>
                     </button>
@@ -850,9 +862,9 @@ Ne pazarold el a pénzedet!
             </div>
 
             <div class="border-b border-gray-200 py-4" role="listitem">
-                <h3 class="font-condensed text-xl font-bold text-black mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-4" id="faq-question-4">
+                <h3 class="font-condensed text-xl font-bold text-grey-900 mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-4" id="faq-question-4">
                         Garanciát vállaltok az eredményekre?
-                        <svg class="faq-icon h-6 w-6 text-black flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
+                        <svg class="faq-icon h-6 w-6 text-grey-900 flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                         </svg>
                     </button>
@@ -865,9 +877,9 @@ Ne pazarold el a pénzedet!
             </div>
             
             <div class="border-b border-gray-200 py-4" role="listitem">
-                <h3 class="font-condensed text-xl font-bold text-black mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-5" id="faq-question-5">
+                <h3 class="font-condensed text-xl font-bold text-grey-900 mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-5" id="faq-question-5">
                         Hogyan kezdjünk bele a közös munkába?
-                        <svg class="faq-icon h-6 w-6 text-black flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
+                        <svg class="faq-icon h-6 w-6 text-grey-900 flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                         </svg>
                     </button>
@@ -880,9 +892,9 @@ Ne pazarold el a pénzedet!
             </div>
 
             <div class="border-b border-gray-200 py-4" role="listitem">
-                <h3 class="font-condensed text-xl font-bold text-black mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-6" id="faq-question-6">
+                <h3 class="font-condensed text-xl font-bold text-grey-900 mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-6" id="faq-question-6">
                         Mikor várhatok eredményeket az online marketingtől?
-                        <svg class="faq-icon h-6 w-6 text-black flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
+                        <svg class="faq-icon h-6 w-6 text-grey-900 flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                         </svg>
                     </button>
@@ -895,9 +907,9 @@ Ne pazarold el a pénzedet!
             </div>
 
             <div class="border-b border-gray-200 py-4" role="listitem">
-                <h3 class="font-condensed text-xl font-bold text-black mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-7" id="faq-question-7">
+                <h3 class="font-condensed text-xl font-bold text-grey-900 mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-7" id="faq-question-7">
                         Már van egy logóm. Miért van szükségem teljes arculatra?
-                        <svg class="faq-icon h-6 w-6 text-black flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
+                        <svg class="faq-icon h-6 w-6 text-grey-900 flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                         </svg>
                     </button>
@@ -910,9 +922,9 @@ Ne pazarold el a pénzedet!
             </div>
 
             <div class="border-b border-gray-200 py-4" role="listitem">
-                <h3 class="font-condensed text-xl font-bold text-black mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-8" id="faq-question-8">
+                <h3 class="font-condensed text-xl font-bold text-grey-900 mb-2"> <button class="faq-toggle w-full flex justify-between items-center text-left" aria-expanded="false" aria-controls="faq-answer-8" id="faq-question-8">
                         Csak induló vállalkozásokkal dolgoztok?
-                        <svg class="faq-icon h-6 w-6 text-black flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
+                        <svg class="faq-icon h-6 w-6 text-grey-900 flex-shrink-0 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" focusable="false">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                         </svg>
                     </button>
@@ -927,61 +939,6 @@ Ne pazarold el a pénzedet!
         </div>
     </div>
 </section>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const faqAccordion = document.getElementById('faq-accordion');
-    if (faqAccordion) {
-        const toggles = faqAccordion.querySelectorAll('.faq-toggle');
-
-        toggles.forEach(toggle => {
-            const h3Element = toggle.closest('h3'); // Megtaláljuk a szülő h3 elemet
-            const icon = toggle.querySelector('.faq-icon');
-            const answer = document.getElementById(toggle.getAttribute('aria-controls'));
-
-            toggle.addEventListener('click', () => {
-                const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-
-                // Bezárja az összes többi nyitott elemet
-                toggles.forEach(otherToggle => {
-                    const otherAnswer = document.getElementById(otherToggle.getAttribute('aria-controls'));
-                    const otherIcon = otherToggle.querySelector('.faq-icon');
-                    const otherH3Element = otherToggle.closest('h3');
-
-                    if (otherToggle !== toggle && otherToggle.getAttribute('aria-expanded') === 'true') {
-                        otherAnswer.style.maxHeight = null;
-                        otherToggle.setAttribute('aria-expanded', 'false');
-                        otherIcon.classList.remove('rotate-180');
-                        otherH3Element.classList.remove('text-brand-blue'); // Kék szín eltávolítása
-                        otherH3Element.classList.add('text-black'); // Fekete szín visszaállítása
-                        otherIcon.classList.remove('text-brand-blue'); // Kék ikon szín eltávolítása
-                        otherIcon.classList.add('text-black'); // Fekete ikon szín visszaállítása
-                    }
-                });
-
-                // Kinyitja vagy becsukja a kattintott elemet
-                if (!isExpanded) {
-                    answer.style.maxHeight = answer.scrollHeight + "px";
-                    toggle.setAttribute('aria-expanded', 'true');
-                    icon.classList.add('rotate-180');
-                    h3Element.classList.remove('text-black'); // Fekete szín eltávolítása
-                    h3Element.classList.add('text-brand-blue'); // Kék szín beállítása
-                    icon.classList.remove('text-black'); // Fekete ikon szín eltávolítása
-                    icon.classList.add('text-brand-blue'); // Kék ikon szín beállítása
-
-                } else {
-                    answer.style.maxHeight = null;
-                    toggle.setAttribute('aria-expanded', 'false');
-                    icon.classList.remove('rotate-180');
-                    h3Element.classList.remove('text-brand-blue'); // Kék szín eltávolítása
-                    h3Element.classList.add('text-black'); // Fekete szín visszaállítása
-                    icon.classList.remove('text-brand-blue'); // Kék ikon szín eltávolítása
-                    icon.classList.add('text-black'); // Fekete ikon szín visszaállítása
-                }
-            });
-        });
-    }
-});
-</script>
 
 <!--CONTACT-->
 <?php
@@ -1063,7 +1020,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <section id="kapcsolat" class="bg-white py-20" aria-labelledby="kapcsolat-heading">
     <div class="container mx-auto px-6">
         <div class="text-center max-w-3xl mx-auto mb-16">
-            <h2 id="kapcsolat-heading" class="font-condensed text-4xl font-bold text-brand-blue mb-4">
+            <h2 id="kapcsolat-heading" class="font-condensed text-4xl font-bold text-brand-blue mb-4 uppercase">
                 Készen állsz a következő lépésre?
             </h2>
             <p class="text-lg text-gray-600">
@@ -1075,27 +1032,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="space-y-8">
                 <div>
-                    <h3 class="font-condensed text-2xl font-bold text-brand-blue mb-2">Beszéljünk!</h3>
+                    <h3 class="font-condensed text-2xl font-bold text-brand-blue mb-2">Ingyenes konzultáció!</h3>
                     <p class="text-gray-600">
-                        Töltsd ki a mellette lévő űrlapot, és hamarosan felveszem veled a kapcsolatot egy ingyenes, kötelezettségmentes konzultációért. Semmi nyomás, csak egy őszinte beszélgetés az ötleteidről.
+                        Töltsd ki az űrlapot és hamarosan felveszem veled a kapcsolatot egy ingyenes, kötelezettségmentes konzultációért. Semmi nyomás, csak egy őszinte beszélgetés az ötleteidről!
                     </p>
                 </div>
-                <div>
-                    <h4 class="font-condensed text-xl font-bold text-brand-blue mb-3">Direkt elérhetőség</h4>
-                    <a href="mailto:hello@studiobgk.com" class="inline-flex items-center text-gray-600 hover:text-brand-blue transition-colors" aria-label="E-mail cím: hello@studiobgk.com">
-                        <svg class="h-6 w-6 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                        </svg>
-                        <span>hello@studiobgk.com</span>
-                    </a>
-                </div>
-                <div>
-                    <h4 class="font-condensed text-xl font-bold text-brand-blue mb-3">Kövess minket</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-blue transition-colors" aria-label="Studio BGK a LinkedIn-en"><svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-blue transition-colors" aria-label="Studio BGK az Instagramon"><svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.059 1.689.073 4.948.073s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44c0-.795-.645-1.44-1.441-1.44z"/></svg></a>
-                    </div>
-                </div>
+<div>
+    <h4 class="font-condensed text-xl font-bold text-brand-blue mb-3">Elérhetőségek</h4>
+    
+    <a href="mailto:info@studiobgk.com" class="inline-flex items-center text-gray-600 hover:text-brand-blue transition-colors" aria-label="E-mail cím: info@studiobgk.com">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope h-6 w-6 mr-3" viewBox="0 0 16 16">
+  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+</svg>
+        <span>info@studiobgk.com</span>
+    </a>
+<br>
+    <a href="tel:+36708822043" class="mt-2 inline-flex items-center text-gray-600 hover:text-brand-blue transition-colors" aria-label="Telefonszám: +36 70 882 2043">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone h-6 w-6 mr-3" viewBox="0 0 16 16">
+  <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+</svg>
+        <span>+36 70 882 2043</span>
+    </a>
+</div>
+
             </div>
 
             <div class="bg-light-bg p-8 rounded-lg shadow-lg">
@@ -1112,22 +1071,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <label for="topic" class="block text-sm font-medium text-gray-700 mb-1">Téma</label>
                         <select id="topic" name="topic" class="w-full p-3 bg-white border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none transition">
                             <option value="">Miben segíthetek?</option> 
-                            <option>Egyedi Weboldal Fejlesztés</option>
-                            <option>Weboldal Sablon</option>
-                            <option>Online Marketing</option>
-                            <option>Általános Kérdés</option>
+                            <option>Digitális stratégia</option>
+                            <option>Arculattervezés</option>
+                            <option>Weboldal készítés</option>
+                            <option>Online marketing</option>
+                             <option>Egyéb</option>
+
                         </select>
                     </div>
                     <div>
                         <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Üzenet</label>
-                        <textarea name="message" id="message" rows="5" required placeholder="Az üzeneted helye..." class="w-full p-3 bg-white border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none transition" aria-describedby="message-error"></textarea>
+                        <textarea name="message" id="message" rows="5" required placeholder="Kérlek írj röviden magadról. Milyen elképzeléseid, kéréseid vannak?" class="w-full p-3 bg-white border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none transition" aria-describedby="message-error"></textarea>
                     </div>
                      <div class="flex items-center">
                         <input id="privacy" name="privacy" type="checkbox" required class="h-4 w-4 text-brand-orange rounded border-gray-300 focus:ring-brand-orange">
                         <label for="privacy" class="ml-2 block text-sm text-gray-600">Elfogadom az <a href="#" class="font-medium text-brand-blue hover:underline">Adatvédelmi Tájékoztatót</a>.</label>
                     </div>
                     <div>
-                         <button type="submit" class="w-full bg-brand-orange text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-orange-500 transition-all duration-300 transform hover:scale-105">
+                         <button type="submit" class="w-full bg-brand-orange text-white font-bold py-2 px-6 rounded-lg shadow-lg hover:bg-orange-500 transition-all duration-300 transform hover:scale-105">
                             Üzenet elküldése
                         </button>
                     </div>
@@ -1142,34 +1103,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <footer id="footer" class="bg-brand-blue text-gray-300" aria-labelledby="footer-heading">
     <div class="container mx-auto px-6 py-16">
         <h2 id="footer-heading" class="sr-only">Lábléc</h2> <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-12 text-center md:text-left"> <div class="lg:col-span-1 flex flex-col items-center md:items-start"> <a href="#header" class="font-condensed text-2xl font-bold text-white tracking-wider" aria-label="Studio BGK logó és kezdőlapra ugrás">Studio BGK</a>
-                <p class="mt-4 text-sm text-gray-400 max-w-xs"> Digitális Partner a Növekedésben. Stratégiától a megvalósításig segítünk, hogy a márkád kiemelkedjen a digitális zajból.
+                <p class="mt-4 text-sm text-gray-400 max-w-xs">Garantált ügyfélszerzés
+modern digitális megoldásokkal.
+Teljes körű webfejlesztés és online marketing valódi eredményekkel.
                 </p>
                 <div class="mt-6 flex space-x-4">
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="Studio BGK a LinkedIn-en"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="Studio BGK az Instagramon"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.059 1.689.073 4.948.073s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44c0-.795-.645-1.44-1.441-1.44z"/></svg></a>
+                    <a href="https://www.facebook.com/studio.bgk" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="Studio BGK a LinkedIn-en">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook h-6 w-6" viewBox="0 0 16 16">
+  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+</svg>                    </a>
+                    <a href="https://www.instagram.com/studio.bgk/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors" aria-label="Studio BGK az Instagramon">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram h-6 w-6" viewBox="0 0 16 16">
+  <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+</svg>                    </a>
                 </div>
             </div>
 
             <div class="flex flex-col items-center md:items-start"> <h3 class="font-condensed text-lg font-bold text-white tracking-wider mb-4" id="gyorslinkek-heading">Gyorslinkek</h3>
                 <nav class="space-y-3" aria-labelledby="gyorslinkek-heading">
-                    <a href="#rolam" class="block hover:text-white transition-colors">Rólam</a>
-                    <a href="#services" class="block hover:text-white transition-colors">Szolgáltatások</a>
-                    <a href="#eredmenyek" class="block hover:text-white transition-colors">Eredmények</a>
-                    <a href="#gyik" class="block hover:text-white transition-colors">GY.I.K.</a>
-                    <a href="#" class="block hover:text-white transition-colors">Blog</a>
+                    <a href="#miert-en" class="block hover:text-white transition-colors">Rólam</a>
+                    <a href="#szolgaltatasok" class="block hover:text-white transition-colors">Szolgáltatások</a>
+                    <a href="#referenciak" class="block hover:text-white transition-colors">Munkáim</a>
+                    <a href="#gyik" class="block hover:text-white transition-colors">GYIK</a>
                 </nav>
             </div>
 
             <div class="flex flex-col items-center md:items-start"> <h3 class="font-condensed text-lg font-bold text-white tracking-wider mb-4" id="informaciok-heading">Információk</h3>
                 <nav class="space-y-3" aria-labelledby="informaciok-heading">
                     <a href="#" class="block hover:text-white transition-colors">Adatvédelmi Tájékoztató</a>
-                    <a href="#" class="block hover:text-white transition-colors">Általános Szerződési Feltételek</a>
                     <a href="#kapcsolat" class="block hover:text-white transition-colors">Kapcsolat</a>
                 </nav>
             </div>
 
-            <div class="flex flex-col items-center md:items-start"> <h3 class="font-condensed text-lg font-bold text-white tracking-wider mb-4" id="hirlevel-heading">Ne maradj le semmiről!</h3>
-                <p class="mt-4 text-sm text-gray-400 max-w-xs"> Iratkozz fel exkluzív marketing tippekért, friss hírekért és esettanulmányokért!
+            <div class="flex flex-col items-center md:items-start"> <h3 class="font-condensed text-lg font-bold text-white tracking-wider mb-4" id="hirlevel-heading">Íratkozz fel hírlevelemre!</h3>
+                <p class="mt-4 text-sm text-gray-400 max-w-xs"> Okos felvetések és exluzív lehetőségek. Spamek nélkül!
                 </p>
                 <form action="#footer" method="POST" class="mt-4 w-full max-w-xs" novalidate> <input type="hidden" name="form_type" value="newsletter"> <div class="flex items-center w-full">
                         <label for="footer-email" class="sr-only">E-mail cím</label>
@@ -1185,7 +1152,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
 
         <div class="mt-16 pt-8 border-t border-blue-800 text-center text-sm text-gray-400">
-            <p>&copy; <span id="current-year"></span> Studio BGK. Minden jog fenntartva. Készítette a digitális siker.</p>
+            <p>&copy; <span id="current-year"></span> Studio BGK. Minden jog fenntartva.</p>
         </div>
     </div>
 </footer>
@@ -1471,5 +1438,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
     });
 </script>
+
 </body>
 </html>
